@@ -1,0 +1,36 @@
+
+dist: trusty
+
+sudo: false
+
+language: php
+
+php:
+    - 5.6
+    - 7.0
+    - 7.1
+
+services:
+  - mysql
+
+install:
+  - travis_retry composer self-update && composer --version
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  # core framework:
+  - travis_retry composer install --prefer-dist --no-interaction
+
+before_script:
+  # show some versions and env information
+  - php -r "echo INTL_ICU_VERSION . \"\n\";"
+  - php -r "echo INTL_ICU_DATA_VERSION . \"\n\";"
+  - mysql --version
+  - mysql -e 'CREATE DATABASE travis_db;'
+  - mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'travis'@'localhost' WITH GRANT OPTION;";
+
+script:
+  - php vendor/bin/codecept run unit -c codeception.yml --debug --coverage-xml
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
+  # or enable logging
+  - travis_retry php vendor/bin/coveralls -v

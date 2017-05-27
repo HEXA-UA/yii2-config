@@ -6,15 +6,11 @@ class_name: UnitTester
 modules:
     enabled:
         - Asserts
-        - Db
-        - Yii2:
-            part: [fixtures, orm]
         - \Helper\Unit
-    config:
-      Db:
-         dsn:      'mysql:host=127.0.0.1;dbname=travis_db'
-         user:     'travis'
-         password: ''
-         dump:     'tests/_data/dump.sql'
-         populate: true #clean database before each test starts
-         cleanup:  true #clean database after each test ends
+coverage:
+    enabled: true
+    remote: false
+    include:
+           - src/components/*
+           - src/models/*
+           - src/traits/*

@@ -3,3 +3,5 @@
 
 # composer vendor dir
 /vendor
+
+tests/_output/*

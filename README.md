@@ -1,2 +1,2 @@
-# Yii2 Settings Manager
+# Yii2 Config Manager
 

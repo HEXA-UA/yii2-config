@@ -17,4 +17,4 @@ before_script:
 # Test
 test:
   script:
-  - vendor/bin/codecept run
+  - php vendor/bin/codecept run -v --no-colors --coverage-text

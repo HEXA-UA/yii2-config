@@ -3,12 +3,11 @@ image: tapakan/basetest:latest
 
 # Select what we should cache
 cache:
+  key: "$CI_BUILD_NAME"
   paths:
   - vendor/
 
 before_script:
-# Install git and unzip (composer will need them)
-- apt-get update
 # Install all project dependencies
 - composer install
 # Run webserver
@@ -17,4 +16,9 @@ before_script:
 # Test
 test:
   script:
-  - php vendor/bin/codecept run -v --no-colors --coverage-text
+  - php vendor/bin/codecept run unit -v --no-colors --coverage-text
+  artifacts:
+    when: always
+    expire_in: 2 days
+    paths:
+      - tests/_output

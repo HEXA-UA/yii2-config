@@ -9,7 +9,7 @@ modules:
         - \Helper\Unit
 coverage:
     enabled: true
-    remote: false
+    remote: true
     include:
            - src/components/*
            - src/models/*

@@ -1,10 +1,13 @@
 # Select image from https://hub.docker.com/_/php/
 image: tapakan/basetest:latest
 
-# Select what we should cache
+stages:
+  - test
+
 cache:
+  key: "$CI_BUILD_NAME"
   paths:
-  - vendor/
+    - vendor
 
 before_script:
 # Install git and unzip (composer will need them)
@@ -12,12 +15,12 @@ before_script:
 # Install all project dependencies
 - composer install
 # Run webserver
-- php -S localhost:8085 --docroot src &>/dev/null&
+- php -S localhost:8080 --docroot src > /dev/null 2>&1
 
 # Test
 test:
   script:
-  - php vendor/bin/codecept run -v --no-colors --coverage-text
+    - php vendor/bin/codecept run unit -v --no-colors --coverage-text
   artifacts:
     when: always
     expire_in: 2 days

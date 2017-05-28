@@ -23,6 +23,7 @@ use yii\helpers\ArrayHelper;
  * @property string  $name
  * @property string  $group
  * @property string  $type
+ * @property string  $description
  */
 class Key extends ActiveRecord implements KeyInterface, ListInterface
 {
@@ -62,6 +63,14 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
     public function getGroup()
     {
         return $this->group;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

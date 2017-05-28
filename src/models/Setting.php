@@ -109,7 +109,15 @@ class Setting extends ActiveRecord implements SettingInterface, ListInterface
      */
     public function getGroup()
     {
-        return $this->key->group;
+        return $this->group;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getDescription()
+    {
+        return $this->key->description;
     }
 
     /**

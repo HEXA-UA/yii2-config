@@ -26,10 +26,13 @@ class KeyTest extends TestUnit
      */
     public function testGetAttributes()
     {
-        $key = $this->getMockedClass(Key::className(), ['attributes']);
+        $key = $this->getMockedClass(Key::className(), ['attributes', 'safeAttributes', 'rules']);
 
         $key->expects($this->any())
             ->method('attributes')
+            ->willReturn(['name', 'group', 'type']);
+        $key->expects($this->any())
+            ->method('safeAttributes')
             ->willReturn(['name', 'group', 'type']);
 
         $key->setAttributes([

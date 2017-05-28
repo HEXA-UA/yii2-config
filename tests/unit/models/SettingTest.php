@@ -31,8 +31,8 @@ class SettingTest extends TestUnit
 
         verify($setting->getName())->equals('setting-name');
         verify($setting->getValue())->equals('setting-value');
-        verify($setting->getType())->equals('setting-type');
         verify($setting->getGroup())->equals('setting-group');
+        verify($setting->getType())->equals('key-type');
         verify($setting->getKey())->isInstanceOf(Key::className());
     }
 
@@ -53,13 +53,14 @@ class SettingTest extends TestUnit
         $setting = $this->getMockedClass(Setting::className(), ['attributes', 'safeAttributes', 'hasOne', 'rules']);
 
         $setting->expects($this->any())->method('rules')->willReturn([]);
-        $setting->expects($this->any())->method('attributes')->willReturn(['name', 'value']);
-        $setting->expects($this->any())->method('safeAttributes')->willReturn(['name', 'value']);
+        $setting->expects($this->any())->method('attributes')->willReturn(['name', 'value', 'group']);
+        $setting->expects($this->any())->method('safeAttributes')->willReturn(['name', 'value', 'group']);
         $setting->expects($this->any())->method('hasOne')->willReturn($this->getMockedKey());
 
         $setting->setAttributes([
             'name'  => 'setting-name',
             'value' => 'setting-value',
+            'group' => 'setting-group',
         ]);
 
         codecept_debug($setting->getAttributes());
@@ -72,14 +73,14 @@ class SettingTest extends TestUnit
      */
     protected function getMockedKey()
     {
-        $key = $this->getMockedClass(Key::className(), ['attributes', 'safeAttributes']);
+        $key = $this->getMockedClass(Key::className(), ['attributes', 'safeAttributes', 'rules']);
 
+        $key->expects($this->any())->method('rules')->willReturn([]);
         $key->expects($this->any())->method('attributes')->willReturn(['group', 'type']);
         $key->expects($this->any())->method('safeAttributes')->willReturn(['group', 'type']);
 
         $key->setAttributes([
-            'group' => 'setting-group',
-            'type'  => 'setting-type',
+            'type' => 'key-type',
         ]);
 
         return $key;

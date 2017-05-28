@@ -29,4 +29,9 @@ interface KeyInterface
      * @return string
      */
     public function getType();
+
+    /**
+     * @return string
+     */
+    public function getDescription();
 }

@@ -29,25 +29,27 @@ class m170524_145534_create_settings_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'id'    => $this->primaryKey(),
+            'group' => $this->string(255)->notNull(),
             'name'  => $this->string(255)->notNull()->unique(),
-            'value' => $this->string(255)->notNull(),
-            'group' => $this->string(255)->notNull()
+            'value' => $this->text()->notNull(),
+            'PRIMARY KEY(name)'
         ], $tableOptions);
 
         $this->createIndex(
-            'NAME_KEYS_UNIQUE',
+            'IDX-GROUP-NAME_UNQ',
             self::$_tableName,
-            ['name'],
+            ['group', 'name'],
             true
         );
 
         $this->addForeignKey(
-            'SETTINGS_NAME_KEYS_NAME',
+            'FK-NAME-NAME-GROUP-GROUP',
             self::$_tableName,
-            'name',
+            ['group', 'name'],
             self::$_refTableName,
-            'name'
+            ['group', 'name'],
+            'CASCADE',
+            'CASCADE'
         );
     }
 
@@ -56,7 +58,7 @@ class m170524_145534_create_settings_table extends Migration
      */
     public function down()
     {
-        $this->dropForeignKey('SETTINGS_KEY_KEYS_NAME', self::$_tableName);
+        $this->dropForeignKey('FK-NAME-NAME-GROUP-GROUP', self::$_tableName);
         $this->dropTable(self::$_tableName);
     }
 }

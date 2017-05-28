@@ -10,8 +10,7 @@
 
 namespace hexa\yiiconfig\actions;
 
-use hexa\yiiconfig\models\Group;
-use hexa\yiiconfig\models\Type;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class CreateAction
@@ -47,10 +46,8 @@ class CreateAction extends BaseAction
             return call_user_func($this->callbackSuccess, $model);
         }
 
-        return $this->controller->render($this->view, [
-            'model'  => $model,
-            'types'  => Type::list(),
-            'groups' => Group::list(),
-        ]);
+        return $this->controller->render($this->view, ArrayHelper::merge([
+            'model' => $model
+        ], $this->params));
     }
 }

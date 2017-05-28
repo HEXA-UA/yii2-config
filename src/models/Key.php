@@ -10,8 +10,11 @@
 
 namespace hexa\yiiconfig\models;
 
+use hexa\yiiconfig\db\KeyQuery;
 use hexa\yiiconfig\interfaces\KeyInterface;
+use hexa\yiiconfig\interfaces\ListInterface;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "keys".
@@ -21,16 +24,8 @@ use yii\db\ActiveRecord;
  * @property string  $group
  * @property string  $type
  */
-class Key extends ActiveRecord implements KeyInterface
+class Key extends ActiveRecord implements KeyInterface, ListInterface
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%keys}}';
-    }
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -66,5 +61,30 @@ class Key extends ActiveRecord implements KeyInterface
     public function getGroup()
     {
         return $this->group;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%keys}}';
+    }
+
+    /**
+     * @inheritdoc
+     * @return KeyQuery
+     */
+    public static function find()
+    {
+        return new KeyQuery(get_called_class());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function list()
+    {
+        return ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
     }
 }

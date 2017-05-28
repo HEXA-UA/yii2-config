@@ -10,6 +10,7 @@
 
 namespace hexa\yiiconfig\models;
 
+use hexa\yiiconfig\interfaces\ListInterface;
 use yii\db\ActiveRecord;
 
 /**
@@ -18,7 +19,7 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property string  $name
  */
-class Type extends ActiveRecord
+class Type extends ActiveRecord implements ListInterface
 {
     /**
      * @inheritdoc

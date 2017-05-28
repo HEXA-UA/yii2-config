@@ -37,6 +37,12 @@ abstract class BaseAction extends Action
     public $modelClass;
 
     /**
+     * Rendering params.
+     * @var array
+     */
+    public $params;
+
+    /**
      * @inheritdoc
      * @throws InvalidConfigException If $modelClass not configure exception will thrown.
      */
@@ -50,26 +56,26 @@ abstract class BaseAction extends Action
 
         if (!is_callable($this->callbackSuccess)) {
             $this->callbackSuccess = function ($model) {
-                return $this->controller->redirect(['view', 'id' => $model->id]);
+                return $this->controller->redirect(['update', 'name' => $model->name]);
             };
         }
 
         if (!is_callable($this->callbackError)) {
             $this->callbackError = function ($model) {
-                return false;
+                return $this->controller->redirect(['index']);
             };
         }
     }
 
     /**
-     * @param $id
+     * @param string $name
      *
      * @return mixed
      * @throws NotFoundHttpException
      */
-    protected function findModel($id)
+    protected function findModel($name)
     {
-        if (($model = $this->modelClass::findOne($id)) !== null) {
+        if (($model = $this->modelClass::findOne($name)) !== null) {
             return $model;
         }
 

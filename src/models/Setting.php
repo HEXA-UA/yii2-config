@@ -10,8 +10,11 @@
 
 namespace hexa\yiiconfig\models;
 
+use hexa\yiiconfig\interfaces\ListInterface;
 use hexa\yiiconfig\interfaces\SettingInterface;
+use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "setting".
@@ -23,7 +26,7 @@ use yii\db\ActiveRecord;
  *
  * @property Key     $key
  */
-class Setting extends ActiveRecord implements SettingInterface
+class Setting extends ActiveRecord implements SettingInterface, ListInterface
 {
     /**
      * @inheritdoc
@@ -35,13 +38,45 @@ class Setting extends ActiveRecord implements SettingInterface
 
     /**
      * @inheritdoc
+     */
+    public static function list()
+    {
+        return ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            [
+                'class'      => AttributeBehavior::className(),
+                'attributes' => [
+                    static::EVENT_BEFORE_INSERT => 'group',
+                    static::EVENT_BEFORE_UPDATE => 'group'
+                ],
+                'value'      => function ($event) {
+                    return Key::find()
+                        ->select('group')
+                        ->asArray(true)
+                        ->byName($event->sender->name)
+                        ->scalar();
+                }
+            ]
+        ];
+    }
+
+    /**
+     * @inheritdoc
      * @codeCoverageIgnore
      */
     public function rules()
     {
         return [
-            ['name', 'in', 'range' => Key::find()->all()],
-            ['value', 'in', 'range' => []],
+            ['name', 'required'],
+            ['name', 'exist', 'targetClass' => Key::className()],
+            ['value', 'safe'],
         ];
     }
 

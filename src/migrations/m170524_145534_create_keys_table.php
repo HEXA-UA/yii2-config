@@ -26,9 +26,10 @@ class m170524_145534_create_keys_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'group' => Schema::TYPE_STRING . ' NOT NULL',
-            'name'  => Schema::TYPE_STRING . ' NOT NULL',
-            'type'  => Schema::TYPE_STRING . ' NOT NULL',
+            'group'       => Schema::TYPE_STRING . ' NOT NULL',
+            'name'        => Schema::TYPE_STRING . ' NOT NULL',
+            'type'        => Schema::TYPE_STRING . ' NOT NULL',
+            'description' => Schema::TYPE_STRING . '(1000) NOT NULL',
             'PRIMARY KEY(name)'
         ], $tableOptions);
 

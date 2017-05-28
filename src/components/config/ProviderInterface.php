@@ -15,4 +15,8 @@ namespace hexa\yiiconfig\components\config;
  */
 interface ProviderInterface
 {
+    /**
+     * @return mixed
+     */
+    public function load();
 }

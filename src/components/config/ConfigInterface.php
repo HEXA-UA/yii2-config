@@ -15,4 +15,16 @@ namespace hexa\yiiconfig\components\config;
  */
 interface ConfigInterface
 {
+    /**
+     * @return ProviderInterface
+     */
+    public function getProvider();
+
+    /**
+     * @param $key
+     * @param $default
+     *
+     * @return ConfigInterface
+     */
+    public function get($key, $default);
 }

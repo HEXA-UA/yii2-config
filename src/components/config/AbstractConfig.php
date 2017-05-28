@@ -17,4 +17,8 @@ use yii\base\Component;
  */
 abstract class AbstractConfig extends Component implements ConfigInterface
 {
+    /**
+     * @var string
+     */
+    public $providerClass;
 }

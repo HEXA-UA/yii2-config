@@ -8,8 +8,6 @@ cache:
   - vendor/
 
 before_script:
-# Install git and unzip (composer will need them)
-- apt-get update
 # Install all project dependencies
 - composer install
 # Run webserver

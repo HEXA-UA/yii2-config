@@ -12,6 +12,7 @@ use yii\data\BaseDataProvider;
 use yii\db\ActiveRecordInterface;
 use yii\grid\GridView;
 use yii\web\View;
+use yii\widgets\Pjax;
 
 /**
  * @var View                  $this
@@ -19,11 +20,22 @@ use yii\web\View;
  * @var ActiveRecordInterface $searchModel
  */
 
+Pjax::begin([
+    'id' => 'settings-index'
+]);
 echo GridView::widget([
     'dataProvider' => $dataProvider,
     'columns'      => [
+        [
+            'class' => 'yii\grid\SerialColumn'
+        ],
         'name',
         'type',
-        'group'
+        'group',
+        [
+            'class'    => 'yii\grid\ActionColumn',
+            'template' => '{update} {delete}'
+        ]
     ]
 ]);
+Pjax::end();

@@ -1,6 +1,8 @@
 <?php
 
+
 use yii\db\Migration;
+use yii\db\Schema;
 
 /**
  * Handles the creation of table `keys_table`.
@@ -24,15 +26,16 @@ class m170524_145534_create_keys_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'name'  => $this->primaryKey(255)->notNull(),
-            'group' => $this->string(255)->notNull(),
-            'type'  => $this->string(255)->notNull()
+            'group' => Schema::TYPE_STRING . ' NOT NULL',
+            'name'  => Schema::TYPE_STRING . ' NOT NULL',
+            'type'  => Schema::TYPE_STRING . ' NOT NULL',
+            'PRIMARY KEY(name)'
         ], $tableOptions);
 
         $this->createIndex(
-            'KEYS_NAME_UNIQUE',
+            'INX-GROUP-NAME-UNQ',
             self::$_tableName,
-            ['name'],
+            ['group', 'name'],
             true
         );
     }

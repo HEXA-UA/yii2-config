@@ -11,10 +11,13 @@
 namespace hexa\yiiconfig\controllers;
 
 use hexa\yiiconfig\actions\CreateAction;
+use hexa\yiiconfig\actions\DeleteAction;
 use hexa\yiiconfig\actions\IndexAction;
+use hexa\yiiconfig\actions\UpdateAction;
+use hexa\yiiconfig\models\Group;
+use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\models\search\KeySearch;
-use hexa\yiiconfig\models\Setting;
-use yii\web\View;
+use hexa\yiiconfig\models\Type;
 
 /**
  * Class KeyController
@@ -26,7 +29,11 @@ class KeyController extends Controller
      */
     public function actions()
     {
-        $className = Setting::className();
+        $className = Key::className();
+        $params    = [
+            'types'  => Type::list(),
+            'groups' => Group::list(),
+        ];
 
         return [
             'index'  => [
@@ -34,13 +41,19 @@ class KeyController extends Controller
                 'searchModelClass' => KeySearch::className(),
                 'modelClass'       => $className
             ],
-            'view'   => [
-                'class'      => View::className(),
-                'modelClass' => $className
+            'update' => [
+                'class'      => UpdateAction::className(),
+                'modelClass' => $className,
+                'params'     => $params
             ],
             'create' => [
                 'class'      => CreateAction::className(),
-                'modelClass' => $className
+                'modelClass' => $className,
+                'params'     => $params
+            ],
+            'delete' => [
+                'class'      => DeleteAction::className(),
+                'modelClass' => $className,
             ]
         ];
     }

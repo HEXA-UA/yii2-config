@@ -2,7 +2,7 @@
   "name"             : "hexa/yiiconfig",
   "version"          : "1.0.0",
   "description"      : "Yii2 config module. With CRUD and service provider",
-  "homepage"         : "http://www.git.hexa.com.ua/yii2/config",
+  "homepage"         : "https://git.hexa.com.ua/yii2/config",
   "type"             : "yii2-extension",
   "minimum-stability": "stable",
   "author"           : {

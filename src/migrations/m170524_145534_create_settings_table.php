@@ -45,7 +45,7 @@ class m170524_145534_create_settings_table extends Migration
         $this->addForeignKey(
             'SETTINGS_NAME_KEYS_NAME',
             self::$_tableName,
-            'key',
+            'name',
             self::$_refTableName,
             'name'
         );

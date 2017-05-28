@@ -10,25 +10,47 @@
 
 namespace hexa\yiiconfig\actions;
 
+use hexa\yiiconfig\models\Group;
+use hexa\yiiconfig\models\Type;
+
 /**
  * Class CreateAction
  */
 class CreateAction extends BaseAction
 {
     /**
+     * View template.
+     * @var string
+     */
+    public $view;
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        if (!isset($this->view)) {
+            $this->view = $this->id;
+        }
+    }
+
+    /**
      * Runs this action without/with the specified parameters.
-     *
-     * @param int $id Primary key
-     *
      * @return mixed
      */
-    public function run($id)
+    public function run()
     {
-        $model = $this->findModel($id);
+        $model = new $this->modelClass();
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return call_user_func($this->callbackSuccess, $model);
         }
 
-        return call_user_func($this->callbackError, $model);
+        return $this->controller->render($this->view, [
+            'model'  => $model,
+            'types'  => Type::list(),
+            'groups' => Group::list(),
+        ]);
     }
 }

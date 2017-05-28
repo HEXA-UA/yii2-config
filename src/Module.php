@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\module;
+namespace hexa\yiiconfig;
 
 /**
  * Class Module

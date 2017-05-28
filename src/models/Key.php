@@ -39,7 +39,7 @@ class Key extends ActiveRecord implements KeyInterface
     {
         return [
             ['group', 'in', 'range' => Group::list()],
-            ['type', 'in', 'range' => []],
+            ['type', 'in', 'range' => Type::list()],
             [['group', 'type', 'name'], 'required']
         ];
     }

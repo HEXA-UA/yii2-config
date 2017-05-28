@@ -33,7 +33,7 @@ trait SearchModelTrait
         ],
         'sort'       => [
             'defaultOrder' => [
-                'created_at' => SORT_DESC
+                'name' => SORT_DESC
             ]
         ]
     ];

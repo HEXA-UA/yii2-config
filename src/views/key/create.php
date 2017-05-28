@@ -22,7 +22,7 @@ use yii\web\View;
 echo Html::beginTag('div', [
     'class' => 'create-key js-create-key'
 ]);
-echo $this->render('_form', [
+echo $this->context->renderPartial('_form', [
     'model'  => $model,
     'groups' => $groups,
     'types'  => $types,

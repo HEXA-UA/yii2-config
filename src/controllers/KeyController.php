@@ -12,8 +12,8 @@ namespace hexa\yiiconfig\controllers;
 
 use hexa\yiiconfig\actions\CreateAction;
 use hexa\yiiconfig\actions\IndexAction;
+use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\models\search\KeySearch;
-use hexa\yiiconfig\models\Setting;
 use yii\web\View;
 
 /**
@@ -26,7 +26,7 @@ class KeyController extends Controller
      */
     public function actions()
     {
-        $className = Setting::className();
+        $className = Key::className();
 
         return [
             'index'  => [

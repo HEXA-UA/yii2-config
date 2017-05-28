@@ -21,7 +21,7 @@ use yii\web\View;
 echo Html::beginTag('div', [
     'class' => 'update-setting js-update-setting'
 ]);
-echo $this->render('_form', [
+echo $this->context->renderPartial('_form', [
     'model' => $model,
     'keys'  => $keys
 ]);

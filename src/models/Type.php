@@ -18,19 +18,31 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property string  $name
  */
-class Group extends ActiveRecord
+class Type extends ActiveRecord
 {
-    /**
-     * CORE group unique name.
-     */
-    const CORE = 'core';
-
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%groups}}';
+        return '{{%types}}';
+    }
+
+    /**
+     * Return list of groups
+     * @return array
+     */
+    public static function list()
+    {
+        return [
+            'string'  => 'string',
+            'integer' => 'integer',
+            'boolean' => 'boolean',
+            'float'   => 'number',
+            'email'   => 'email',
+            'ip'      => 'ip',
+            'url'     => 'url',
+        ];
     }
 
     /**
@@ -42,17 +54,6 @@ class Group extends ActiveRecord
         return [
             ['name', 'unique'],
             ['name', 'required'],
-        ];
-    }
-
-    /**
-     * Return list of groups
-     * @return array
-     */
-    public static function list()
-    {
-        return [
-            static::CORE => static::CORE
         ];
     }
 }

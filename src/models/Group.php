@@ -11,7 +11,6 @@
 namespace hexa\yiiconfig\models;
 
 use hexa\yiiconfig\interfaces\ListInterface;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "groups".

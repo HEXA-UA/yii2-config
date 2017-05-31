@@ -10,11 +10,11 @@
 
 namespace hexa\yiiconfig\tests\unit\traits;
 
-use AspectMock\Test;
 use Codeception\Specify;
 use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\models\Setting;
 use hexa\yiiconfig\tests\unit\TestUnit;
+use yii\db\ActiveQueryInterface;
 
 /**
  * Trait SettingTest
@@ -71,29 +71,11 @@ class SettingTest extends TestUnit
     }
 
     /**
-     * Test that type list is not empty.
+     * Test return value find method.
      */
-    public function testList()
+    public function testFind()
     {
-        $randomOne   = random_bytes(16);
-        $randomTwo   = random_bytes(8);
-        $randomThree = random_bytes(4);
-        $randomFour  = random_bytes(2);
-
-        test::double(Setting::className(), [
-            'all' => [
-                ['name' => $randomOne],
-                ['name' => $randomTwo],
-                ['name' => $randomThree],
-                ['name' => $randomFour],
-            ]
-        ]);
-
-        $verified = verify(Setting::list());
-        $verified->contains($randomOne);
-        $verified->contains($randomTwo);
-        $verified->contains($randomThree);
-        $verified->contains($randomFour);
+        verify(Setting::find())->isInstanceOf(ActiveQueryInterface::class);
     }
 
     /**

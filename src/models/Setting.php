@@ -10,10 +10,10 @@
 
 namespace hexa\yiiconfig\models;
 
+use hexa\yiiconfig\db\SettingQuery;
 use hexa\yiiconfig\interfaces\ListInterface;
 use hexa\yiiconfig\interfaces\SettingInterface;
 use yii\behaviors\AttributeBehavior;
-use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -28,22 +28,6 @@ use yii\helpers\ArrayHelper;
  */
 class Setting extends ActiveRecord implements SettingInterface, ListInterface
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%settings}}';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function list()
-    {
-        return ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
-    }
-
     /**
      * @inheritdoc
      */
@@ -127,5 +111,32 @@ class Setting extends ActiveRecord implements SettingInterface, ListInterface
     public function getKey()
     {
         return $this->hasOne(Key::className(), ['name' => 'name']);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%settings}}';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function find()
+    {
+        return \Yii::createObject(SettingQuery::className(), [get_called_class()]);
+    }
+
+    /**
+     * @inheritdoc
+     * @codeCoverageIgnore
+     */
+    public static function list()
+    {
+        $list = static::find()->asArray()->all();
+
+        return ArrayHelper::map($list, 'name', 'name');
     }
 }

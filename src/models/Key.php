@@ -13,7 +13,6 @@ namespace hexa\yiiconfig\models;
 use hexa\yiiconfig\db\KeyQuery;
 use hexa\yiiconfig\interfaces\KeyInterface;
 use hexa\yiiconfig\interfaces\ListInterface;
-use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -83,11 +82,10 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
 
     /**
      * @inheritdoc
-     * @return KeyQuery
      */
     public static function find()
     {
-        return new KeyQuery(get_called_class());
+        return \Yii::createObject(KeyQuery::className(), [get_called_class()]);
     }
 
     /**

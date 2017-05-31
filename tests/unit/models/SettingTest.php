@@ -10,6 +10,7 @@
 
 namespace hexa\yiiconfig\tests\unit\traits;
 
+use AspectMock\Test;
 use Codeception\Specify;
 use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\models\Setting;
@@ -33,6 +34,7 @@ class SettingTest extends TestUnit
         verify($setting->getValue())->equals('setting-value');
         verify($setting->getGroup())->equals('setting-group');
         verify($setting->getType())->equals('key-type');
+        verify($setting->getDescription())->equals('key-description');
         verify($setting->getKey())->isInstanceOf(Key::className());
     }
 
@@ -69,6 +71,32 @@ class SettingTest extends TestUnit
     }
 
     /**
+     * Test that type list is not empty.
+     */
+    public function testList()
+    {
+        $randomOne   = random_bytes(16);
+        $randomTwo   = random_bytes(8);
+        $randomThree = random_bytes(4);
+        $randomFour  = random_bytes(2);
+
+        test::double(Setting::className(), [
+            'all' => [
+                ['name' => $randomOne],
+                ['name' => $randomTwo],
+                ['name' => $randomThree],
+                ['name' => $randomFour],
+            ]
+        ]);
+
+        $verified = verify(Setting::list());
+        $verified->contains($randomOne);
+        $verified->contains($randomTwo);
+        $verified->contains($randomThree);
+        $verified->contains($randomFour);
+    }
+
+    /**
      * @return \PHPUnit_Framework_MockObject_MockObject
      */
     protected function getMockedKey()
@@ -76,11 +104,12 @@ class SettingTest extends TestUnit
         $key = $this->getMockedClass(Key::className(), ['attributes', 'safeAttributes', 'rules']);
 
         $key->expects($this->any())->method('rules')->willReturn([]);
-        $key->expects($this->any())->method('attributes')->willReturn(['group', 'type']);
-        $key->expects($this->any())->method('safeAttributes')->willReturn(['group', 'type']);
+        $key->expects($this->any())->method('attributes')->willReturn(['group', 'type', 'description']);
+        $key->expects($this->any())->method('safeAttributes')->willReturn(['group', 'type', 'description']);
 
         $key->setAttributes([
-            'type' => 'key-type',
+            'type'        => 'key-type',
+            'description' => 'key-description'
         ]);
 
         return $key;

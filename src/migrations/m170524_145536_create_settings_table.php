@@ -1,17 +1,21 @@
 <?php
 
-
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `keys_table`.
+ * Handles the creation of table `settings`.
  */
-class m170524_145534_create_keys_table extends Migration
+class m170524_145536_create_settings_table extends Migration
 {
     /**
      * @var string
      */
-    private static $_tableName = '{{%settings_keys}}';
+    private static $_tableName = '{{%settings}}';
+
+    /**
+     * @var string
+     */
+    private static $_refTableName = '{{%settings_keys}}';
 
     /**
      * @inheritdoc
@@ -25,18 +29,27 @@ class m170524_145534_create_keys_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'group'       => $this->string(255)->notNull(),
-            'name'        => $this->string(255)->notNull(),
-            'type'        => $this->string(255)->notNull(),
-            'description' => $this->string(1000)->notNull(),
+            'group' => $this->string(255)->notNull(),
+            'name'  => $this->string(255)->notNull()->unique(),
+            'value' => $this->text()->notNull(),
             'PRIMARY KEY(name)'
         ], $tableOptions);
 
         $this->createIndex(
-            'INX-GROUP-NAME-UNQ',
+            'IDX-GROUP-NAME_UNQ',
             self::$_tableName,
             ['group', 'name'],
             true
+        );
+
+        $this->addForeignKey(
+            'FK-NAME-NAME-GROUP-GROUP',
+            self::$_tableName,
+            ['group', 'name'],
+            self::$_refTableName,
+            ['group', 'name'],
+            'CASCADE',
+            'CASCADE'
         );
     }
 
@@ -45,6 +58,7 @@ class m170524_145534_create_keys_table extends Migration
      */
     public function down()
     {
+        $this->dropForeignKey('FK-NAME-NAME-GROUP-GROUP', self::$_tableName);
         $this->dropTable(self::$_tableName);
     }
 }

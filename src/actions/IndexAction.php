@@ -47,7 +47,7 @@ class IndexAction extends BaseAction
     public function run()
     {
         /** @var SearchModelInterface $searchModel */
-        $searchModel  = new $this->searchModelClass();
+        $searchModel  = $this->getSearchModel();
         $dataProvider = $searchModel->search(\Yii::$app->request->queryParams, [
             'query' => $this->modelClass::find()
         ]);
@@ -56,5 +56,13 @@ class IndexAction extends BaseAction
             'dataProvider' => $dataProvider,
             'searchModel'  => $searchModel
         ]);
+    }
+
+    /**
+     * @return SearchModelInterface
+     */
+    private function getSearchModel()
+    {
+        return new $this->searchModelClass();
     }
 }

@@ -8,7 +8,9 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\components\config;
+namespace hexa\yiiconfig\component;
+
+use hexa\yiiconfig\component\providers\ProviderInterface;
 
 /**
  * Interface ConfigInterface
@@ -21,10 +23,18 @@ interface ConfigInterface
     public function getProvider();
 
     /**
-     * @param $key
-     * @param $default
+     * @param string $key
+     * @param mixed  $default
      *
      * @return ConfigInterface
      */
-    public function get($key, $default);
+    public function get($key, $default = null);
+
+    /**
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return ConfigInterface
+     */
+    public function set($key, $value);
 }

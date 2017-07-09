@@ -2,7 +2,6 @@
 
 
 use yii\db\Migration;
-use yii\db\Schema;
 
 /**
  * Handles the creation of table `keys_table`.
@@ -12,7 +11,7 @@ class m170524_145534_create_keys_table extends Migration
     /**
      * @var string
      */
-    private static $_tableName = '{{%keys}}';
+    private static $_tableName = '{{%settings_keys}}';
 
     /**
      * @inheritdoc
@@ -26,10 +25,10 @@ class m170524_145534_create_keys_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'group'       => Schema::TYPE_STRING . ' NOT NULL',
-            'name'        => Schema::TYPE_STRING . ' NOT NULL',
-            'type'        => Schema::TYPE_STRING . ' NOT NULL',
-            'description' => Schema::TYPE_STRING . '(1000) NOT NULL',
+            'group'       => $this->string(255)->notNull(),
+            'name'        => $this->string(255)->notNull(),
+            'type'        => $this->string(255)->notNull(),
+            'description' => $this->string(1000)->notNull(),
             'PRIMARY KEY(name)'
         ], $tableOptions);
 

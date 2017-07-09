@@ -10,6 +10,9 @@
 
 namespace hexa\yiiconfig\tests\unit\db;
 
+use AspectMock\Test;
+use hexa\yiiconfig\db\KeyQuery;
+use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\tests\unit\TestUnit;
 
 /**
@@ -17,5 +20,18 @@ use hexa\yiiconfig\tests\unit\TestUnit;
  */
 class KeyQueryTest extends TestUnit
 {
+    /**
+     * Test byName method.
+     * @see KeyQuery::byName()
+     */
+    public function testByName()
+    {
+        $this->specify("KeyQuery byName method should called byAttribute method", function () {
+            $query = new KeyQuery(Key::className());
+            $query = test::double($query);
 
+            $query->byName('name');
+            $query->verifyInvoked('byAttribute');
+        });
+    }
 }

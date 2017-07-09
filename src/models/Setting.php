@@ -135,8 +135,6 @@ class Setting extends ActiveRecord implements SettingInterface, ListInterface
      */
     public static function list()
     {
-        $list = static::find()->asArray()->all();
-
-        return ArrayHelper::map($list, 'name', 'name');
+        return ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * AbstractConfig
+ * ActiveQueryTest
  * @version     1.0
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
@@ -8,17 +8,14 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\components\config;
+namespace hexa\yiiconfig\tests\unit\db;
 
-use yii\base\Component;
+use hexa\yiiconfig\tests\unit\TestUnit;
 
 /**
- * Class AbstractConfig
+ * Class ActiveQueryTest
  */
-abstract class AbstractConfig extends Component implements ConfigInterface
+class ActiveQueryTest extends TestUnit
 {
-    /**
-     * @var string
-     */
-    public $providerClass;
+
 }

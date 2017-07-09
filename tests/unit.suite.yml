@@ -11,6 +11,7 @@ coverage:
     enabled: true
     remote: true
     include:
-           - src/components/*
            - src/models/*
            - src/traits/*
+           - src/db/*
+           - src/component/*

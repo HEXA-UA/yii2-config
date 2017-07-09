@@ -16,7 +16,7 @@ use hexa\yiiconfig\tests\unit\TestUnit;
 use yii\db\ActiveQueryInterface;
 
 /**
- * Trait KeyTest
+ * Class KeyTest
  */
 class KeyTest extends TestUnit
 {
@@ -42,6 +42,7 @@ class KeyTest extends TestUnit
             'type'        => 'key-type',
             'description' => 'key-description',
         ]);
+
         codecept_debug($key->getName());
         codecept_debug($key->getGroup());
         codecept_debug($key->getType());

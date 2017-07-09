@@ -1,6 +1,6 @@
 <?php
 /**
- * Setting index view
+ * Key index view
  * @version     1.0
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan

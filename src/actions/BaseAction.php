@@ -56,7 +56,7 @@ abstract class BaseAction extends Action
 
         if (!is_callable($this->callbackSuccess)) {
             $this->callbackSuccess = function ($model) {
-                return $this->controller->redirect(['update', 'name' => $model->name]);
+                return $this->controller->redirect(['index']);
             };
         }
 

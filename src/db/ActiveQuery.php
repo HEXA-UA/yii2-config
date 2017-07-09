@@ -10,12 +10,12 @@
 
 namespace hexa\yiiconfig\db;
 
-use \yii\db\ActiveQuery as SuperActiveQuery;
+use \yii\db\ActiveQuery as BaseActiveQuery;
 
 /**
  * Class ActiveQuery
  */
-class ActiveQuery extends SuperActiveQuery
+class ActiveQuery extends BaseActiveQuery
 {
     /**
      * @param $attribute

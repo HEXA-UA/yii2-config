@@ -1,6 +1,6 @@
 <?php
 /**
- * Key index view
+ * Setting index view
  * @version     1.0
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
@@ -21,7 +21,7 @@ use yii\widgets\Pjax;
  */
 
 Pjax::begin([
-    'id' => 'settings-index'
+    'id' => 'setting-index'
 ]);
 echo GridView::widget([
     'dataProvider' => $dataProvider,

@@ -30,7 +30,7 @@ class Group extends ActiveRecord implements ListInterface
      */
     public static function tableName()
     {
-        return '{{%groups}}';
+        return '{{%settings_groups}}';
     }
 
     /**

@@ -21,7 +21,7 @@ use yii\widgets\Pjax;
  */
 
 Pjax::begin([
-    'id' => 'settings-index'
+    'id' => 'key-index'
 ]);
 echo GridView::widget([
     'dataProvider' => $dataProvider,

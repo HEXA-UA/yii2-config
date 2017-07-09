@@ -77,7 +77,7 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
      */
     public static function tableName()
     {
-        return '{{%keys}}';
+        return '{{%settings_keys}}';
     }
 
     /**

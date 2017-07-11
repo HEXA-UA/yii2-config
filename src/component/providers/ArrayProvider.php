@@ -18,7 +18,20 @@ class ArrayProvider extends BaseProvider
     /**
      * @var array
      */
-    public $data = [];
+    private $data = [];
+
+    /**
+     * ArrayProvider constructor.
+     * @inheritdoc
+     *
+     * @param array $data
+     */
+    public function __construct(array $data, array $config = [])
+    {
+        parent::__construct($config);
+
+        $this->data = $data;
+    }
 
     /**
      * @inheritdoc

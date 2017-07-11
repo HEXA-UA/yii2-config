@@ -10,6 +10,7 @@
 
 namespace hexa\yiiconfig\actions;
 
+use hexa\yiiconfig\models\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -41,6 +42,7 @@ class CreateAction extends BaseAction
      */
     public function run()
     {
+        /** @var ActiveRecord $model */
         $model = new $this->modelClass();
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return call_user_func($this->callbackSuccess, $model);

@@ -40,7 +40,7 @@ abstract class BaseAction extends Action
      * Rendering params.
      * @var array
      */
-    public $params;
+    public $params = [];
 
     /**
      * @inheritdoc

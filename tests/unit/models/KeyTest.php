@@ -67,6 +67,6 @@ class KeyTest extends TestUnit
      */
     public function testTableName()
     {
-        verify(Key::tableName())->equals('{{%keys}}');
+        verify(Key::tableName())->equals('{{%settings_keys}}');
     }
 }

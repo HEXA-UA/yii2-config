@@ -34,6 +34,6 @@ class GroupTest extends TestUnit
      */
     public function testTableName()
     {
-        verify(Group::tableName())->equals('{{%groups}}');
+        verify(Group::tableName())->equals('{{%settings_groups}}');
     }
 }

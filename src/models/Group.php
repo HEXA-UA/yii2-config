@@ -10,6 +10,7 @@
 
 namespace hexa\yiiconfig\models;
 
+use hexa\yiiconfig\interfaces\GroupInterface;
 use hexa\yiiconfig\interfaces\ListInterface;
 
 /**
@@ -18,7 +19,7 @@ use hexa\yiiconfig\interfaces\ListInterface;
  * @property integer $id
  * @property string  $name
  */
-class Group extends ActiveRecord implements ListInterface
+class Group extends ActiveRecord implements GroupInterface, ListInterface
 {
     /**
      * CORE group unique name.
@@ -40,8 +41,10 @@ class Group extends ActiveRecord implements ListInterface
     public function rules()
     {
         return [
-            ['name', 'unique'],
             ['name', 'required'],
+            ['name', 'string', 'max' => 255],
+            ['name', 'filter', 'filter' => 'strtolower'],
+            ['name', 'unique'],
         ];
     }
 
@@ -54,5 +57,14 @@ class Group extends ActiveRecord implements ListInterface
         return [
             static::CORE => static::CORE
         ];
+    }
+
+    /**
+     * Returns unique group name.
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

@@ -21,11 +21,11 @@ use yii\base\Component;
  * [
  *     'components' => [
  *          'config' => [
- *               'provider' => hexa\yiiconfig\providers\DbProvider
+ *               'providerConfig' => hexa\yiiconfig\providers\DbProvider
  *
  *               // OR you can configure it
  *
- *               'provider' => [
+ *               'providerConfig' => [
  *                    'class'      => 'hexa\yiiconfig\providers\DbProvider',
  *                    'queryClass' => 'yii\db\Query',
  *                    'tableName'  => '{{%settings}}'

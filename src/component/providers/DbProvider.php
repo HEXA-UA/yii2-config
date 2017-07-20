@@ -53,7 +53,7 @@ class DbProvider extends BaseProvider implements ProviderInterface
      */
     public function init()
     {
-        $this->db = Instance::ensure($this->db);
+        $this->db = \Yii::$app->get('db');
 
         parent::init();
     }

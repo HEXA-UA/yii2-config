@@ -17,16 +17,4 @@ use yii\base\Object;
  */
 abstract class BaseProvider extends Object implements ProviderInterface
 {
-    /**
-     * @var string Current class collection
-     */
-    public $collectionClass = 'hexa\yiiconfig\component\Collection';
-
-    /**
-     * @inheritdoc
-     */
-    public function initialize()
-    {
-
-    }
 }

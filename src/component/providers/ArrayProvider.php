@@ -26,7 +26,7 @@ class ArrayProvider extends BaseProvider
      *
      * @param array $data
      */
-    public function __construct(array $data, array $config = [])
+    public function __construct(array $data = [], array $config = [])
     {
         parent::__construct($config);
 
@@ -47,14 +47,5 @@ class ArrayProvider extends BaseProvider
     public function initialize()
     {
         return $this->data;
-    }
-
-    /**
-     * Load settings.
-     * @return mixed
-     */
-    public function load()
-    {
-        // TODO: Implement load() method.
     }
 }

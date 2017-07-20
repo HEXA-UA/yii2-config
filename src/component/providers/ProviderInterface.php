@@ -16,10 +16,9 @@ namespace hexa\yiiconfig\component\providers;
 interface ProviderInterface
 {
     /**
-     * Load settings.
-     * @return mixed
+     * @return void
      */
-    public function load();
+    public function initialize();
 
     /**
      * @param string $key

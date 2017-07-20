@@ -10,8 +10,6 @@
 
 namespace hexa\yiiconfig\component\providers;
 
-use hexa\yiiconfig\component\CollectionInterface;
-use yii\base\InvalidValueException;
 use yii\base\Object;
 
 /**
@@ -25,26 +23,10 @@ abstract class BaseProvider extends Object implements ProviderInterface
     public $collectionClass = 'hexa\yiiconfig\component\Collection';
 
     /**
-     * @var CollectionInterface
+     * @inheritdoc
      */
-    private $collection;
-
-    /**
-     * @return $this
-     * @throws InvalidValueException
-     */
-    public function load()
+    public function initialize()
     {
-        $this->collection = $this->initialize();
-        if (!$this->collection instanceof CollectionInterface) {
-            throw new InvalidValueException("Collection property should be instance of CollectionInterface");
-        }
 
-        return $this;
     }
-
-    /**
-     * @return CollectionInterface
-     */
-    abstract public function initialize();
 }

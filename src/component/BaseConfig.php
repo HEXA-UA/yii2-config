@@ -59,14 +59,26 @@ abstract class BaseConfig extends Component implements ConfigInterface
     {
         parent::init();
 
-        $this->getProvider()->load();
+        $this->getProvider()->initialize();
     }
 
     /**
      * @inheritdoc
      */
+    public function get($key, $default = null)
+    {
+        return $this->provider->get($key, $default);
+    }
+
+    /**
+     * @return ProviderInterface
+     */
     public function getProvider()
     {
-        return \Yii::createObject($this->providerConfig);
+        if (!$this->provider) {
+            $this->provider = \Yii::createObject($this->providerConfig);
+        }
+
+        return $this->provider;
     }
 }

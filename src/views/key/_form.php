@@ -27,6 +27,7 @@ $form   = ActiveForm::begin($config); ?>
 <?php echo $form->field($model, 'name')->textInput(); ?>
 <?php echo $form->field($model, 'group')->dropDownList($groups); ?>
 <?php echo $form->field($model, 'type')->dropDownList($types); ?>
+<?php echo $form->field($model, 'description')->textarea(); ?>
 
     <div class="form-group">
         <?php echo Html::submitButton(Yii::t('app', 'Save'), [

@@ -1,6 +1,6 @@
 <?php
 /**
- * ConfigInterface
+ * BaseConfig
  * @version     1.0
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
@@ -10,30 +10,32 @@
 
 namespace hexa\yiiconfig\component;
 
+use yii\base\NotSupportedException;
+
 /**
- * Interface ConfigInterface
+ * Class ManagerConfig
  */
-interface ConfigInterface
+class ManagerConfig extends BaseConfig
 {
-    /**
-     * @param string $key
-     * @param mixed  $default
-     *
-     * @return ConfigInterface
-     */
-    public function get($key, $default = null);
-    
     /**
      * @param string $name
      *
      * @return mixed
+     * @throws NotSupportedException
      */
-    public function addGroup($name);
+    public function addGroup($name)
+    {
+        throw new NotSupportedException("Not implemented yet");
+    }
 
     /**
      * @param $name
      *
      * @return mixed
+     * @throws NotSupportedException
      */
-    public function addKey($name);
+    public function addKey($name)
+    {
+        throw new NotSupportedException("Not implemented yet");
+    }
 }

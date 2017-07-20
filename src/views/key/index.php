@@ -31,6 +31,7 @@ echo GridView::widget([
         ],
         'name',
         'type',
+        'description',
         'group',
         [
             'class'    => 'yii\grid\ActionColumn',

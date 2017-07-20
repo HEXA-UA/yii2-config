@@ -26,6 +26,20 @@ class Module extends \yii\base\Module
     public $defaultRoute = 'setting';
 
     /**
+     * Array of validation rules.
+     * @var array
+     */
+    public $validators = [
+        'string'  => [],
+        'integer' => [],
+        'boolean' => [],
+        'number'  => [],
+        'email'   => [],
+        'ip'      => [],
+        'url'     => [],
+    ];
+
+    /**
      * @inheritdoc
      */
     public function init()

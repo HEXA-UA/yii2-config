@@ -29,9 +29,11 @@ echo GridView::widget([
         [
             'class' => 'yii\grid\SerialColumn'
         ],
-        'group',
         'name',
         'value',
+        'group',
+        'key.type',
+        'key.description',
         [
             'class'    => 'yii\grid\ActionColumn',
             'template' => '{update} {delete}',

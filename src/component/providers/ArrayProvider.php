@@ -48,4 +48,13 @@ class ArrayProvider extends BaseProvider
     {
         return $this->data;
     }
+
+    /**
+     * Load settings.
+     * @return mixed
+     */
+    public function load()
+    {
+        // TODO: Implement load() method.
+    }
 }

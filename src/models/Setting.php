@@ -13,8 +13,8 @@ namespace hexa\yiiconfig\models;
 use hexa\yiiconfig\db\SettingQuery;
 use hexa\yiiconfig\interfaces\ListInterface;
 use hexa\yiiconfig\interfaces\SettingInterface;
+use yii\base\DynamicModel;
 use yii\behaviors\AttributeBehavior;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "setting".
@@ -58,6 +58,7 @@ class Setting extends ActiveRecord implements SettingInterface, ListInterface
     public function rules()
     {
         return [
+            [['group', 'name'], 'unique'],
             ['name', 'required'],
             ['name', 'exist', 'targetClass' => Key::className()],
             ['value', 'safe'],
@@ -116,6 +117,29 @@ class Setting extends ActiveRecord implements SettingInterface, ListInterface
     /**
      * @inheritdoc
      */
+    public function beforeSave($insert)
+    {
+        $model = DynamicModel::validateData(
+            [
+                'value' => $this->value
+            ],
+            [
+                $this->getValidator()
+            ]
+        );
+
+        if ($model->hasErrors()) {
+            $this->addError('value', $model->getFirstError('value'));
+
+            return false;
+        }
+
+        return parent::beforeSave($insert);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public static function tableName()
     {
         return '{{%settings}}';
@@ -135,6 +159,18 @@ class Setting extends ActiveRecord implements SettingInterface, ListInterface
      */
     public static function list()
     {
-        return ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
+        return \yii\helpers\ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getValidator()
+    {
+        $validator = \Yii::$app->controller->module->validators[$this->key->type];
+        array_unshift($validator, $this->key->type);
+        array_unshift($validator, 'value');
+
+        return $validator;
     }
 }

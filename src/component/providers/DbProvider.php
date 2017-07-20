@@ -10,7 +10,6 @@
 
 namespace hexa\yiiconfig\component\providers;
 
-use hexa\yiiconfig\component\Collection;
 use yii\db\Connection;
 use yii\db\QueryInterface;
 use yii\db\QueryTrait;
@@ -64,13 +63,16 @@ class DbProvider extends BaseProvider implements ProviderInterface
      */
     public function initialize()
     {
-        $data = $this->getQuery()
-            ->select(['key' => $this->valueAttribute, 'value' => $this->keyAttribute])
-            ->from($this->tableName)
-            ->indexBy($this->keyAttribute)
-            ->column();
+        $data = $this->db
+            ->createCommand("
+                  SELECT
+                     $this->valueAttribute
+                  FROM 
+                     $this->tableName
+            ")
+            ->queryAll();
 
-        return new Collection($data);
+        return $data;
     }
 
     /**
@@ -78,26 +80,22 @@ class DbProvider extends BaseProvider implements ProviderInterface
      */
     public function get($key, $default = null)
     {
-        $value = $this->getQuery()
-            ->select($key)
-            ->from($this->tableName)
-            ->indexBy($this->keyAttribute)
-            ->scalar();
+        $value = $this->db
+            ->createCommand("
+                  SELECT
+                     $this->valueAttribute
+                  FROM 
+                     $this->tableName
+                  WHERE 
+                     $this->keyAttribute=:key
+            ")
+            ->bindValue(':key', $key)
+            ->queryScalar();
 
-        if ($value) {
-            $default = $value;
+        if (!$value) {
+            $value = $default;
         }
 
-        return $default;
-    }
-
-    /**
-     * Return instance of yii\db\Query.
-     * @return QueryTrait|QueryInterface
-     * @see \yii\db\Query
-     */
-    protected function getQuery()
-    {
-        return new $this->queryClass();
+        return $value;
     }
 }

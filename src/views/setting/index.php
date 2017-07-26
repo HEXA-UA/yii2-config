@@ -31,7 +31,7 @@ echo GridView::widget([
         ],
         'name',
         'value',
-        'group',
+        'key.group',
         'key.type',
         'key.description',
         [

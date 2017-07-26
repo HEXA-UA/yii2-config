@@ -19,14 +19,25 @@ use hexa\yiiconfig\tests\unit\TestUnit;
 abstract class SearchTest extends TestUnit
 {
     /**
+     * @inheritdoc
+     */
+    protected function _before()
+    {
+        parent::_before();
+
+        $this->registerServices();
+    }
+
+    /**
      * Test instantiate dataProvider function
      */
     public function testGetDataProvider()
     {
         $modelClass = $this->getModelClass();
-        
+
         test::double($modelClass, ['find' => new \ArrayObject()]);
-        $key = new $modelClass([
+        $key = \Yii::createObject([
+            'class'             => $modelClass,
             'dataProviderClass' => \ArrayObject::class
         ]);
 

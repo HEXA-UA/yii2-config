@@ -26,31 +26,8 @@ use yii\behaviors\AttributeBehavior;
  *
  * @property Key     $key
  */
-class Setting extends ActiveRecord implements SettingInterface, ListInterface
+class Setting extends ActiveRecord implements SettingInterface
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            [
-                'class'      => AttributeBehavior::className(),
-                'attributes' => [
-                    static::EVENT_BEFORE_INSERT => 'group',
-                    static::EVENT_BEFORE_UPDATE => 'group'
-                ],
-                'value'      => function ($event) {
-                    return Key::find()
-                        ->select('group')
-                        ->asArray(true)
-                        ->byName($event->sender->name)
-                        ->scalar();
-                }
-            ]
-        ];
-    }
-
     /**
      * @inheritdoc
      * @codeCoverageIgnore
@@ -151,15 +128,6 @@ class Setting extends ActiveRecord implements SettingInterface, ListInterface
     public static function find()
     {
         return \Yii::createObject(SettingQuery::className(), [get_called_class()]);
-    }
-
-    /**
-     * @inheritdoc
-     * @codeCoverageIgnore
-     */
-    public static function list()
-    {
-        return \yii\helpers\ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
     }
 
     /**

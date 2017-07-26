@@ -1,17 +1,16 @@
 <?php
 
-
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `keys`.
+ * Handles the creation of table `groups`.
  */
-class m170524_145535_create_keys_table extends Migration
+class m170524_145534_create_settings_groups_table extends Migration
 {
     /**
      * @var string
      */
-    private static $_tableName = '{{%settings_keys}}';
+    private static $_tableName = '{{%settings_groups}}';
 
     /**
      * @inheritdoc
@@ -25,19 +24,13 @@ class m170524_145535_create_keys_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'group'       => $this->string(255)->notNull(),
-            'name'        => $this->string(255)->notNull(),
-            'type'        => $this->string(255)->notNull(),
-            'description' => $this->string(1000)->notNull(),
+            'name' => $this->string(255)->notNull(),
             'PRIMARY KEY(name)'
         ], $tableOptions);
 
-        $this->createIndex(
-            'INX-GROUP-NAME-UNQ',
-            self::$_tableName,
-            ['group', 'name'],
-            true
-        );
+        $this->batchInsert(static::$_tableName, ['name'], [
+            ['core']
+        ]);
     }
 
     /**

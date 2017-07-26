@@ -1,21 +1,22 @@
 <?php
 
+
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `settings`.
+ * Handles the creation of table `keys`.
  */
-class m170524_145536_create_settings_table extends Migration
+class m170524_145535_create_settings_keys_table extends Migration
 {
     /**
      * @var string
      */
-    private static $_tableName = '{{%settings}}';
+    private static $_tableName = '{{%settings_keys}}';
 
     /**
      * @var string
      */
-    private static $_refKeyTableName = '{{%settings_keys}}';
+    private static $_refTableName = '{{%settings_groups}}';
 
     /**
      * @inheritdoc
@@ -29,16 +30,25 @@ class m170524_145536_create_settings_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'name'  => $this->string(255)->notNull()->unique(),
-            'value' => $this->text()->notNull(),
+            'group'       => $this->string(255)->notNull(),
+            'name'        => $this->string(255)->notNull(),
+            'type'        => $this->string(255)->notNull(),
+            'description' => $this->string(1000)->notNull(),
             'PRIMARY KEY(name)'
         ], $tableOptions);
 
-        $this->addForeignKey(
-            'FK-SETTING_NAME-KEY_NAME',
+        $this->createIndex(
+            'INX-GROUP-NAME-UNQ',
             self::$_tableName,
-            'name',
-            self::$_refKeyTableName,
+            ['group', 'name'],
+            true
+        );
+
+        $this->addForeignKey(
+            'FK-KEY_GROUP-GROUP_NAME',
+            self::$_tableName,
+            'group',
+            self::$_refTableName,
             'name',
             'RESTRICT',
             'RESTRICT'
@@ -50,7 +60,6 @@ class m170524_145536_create_settings_table extends Migration
      */
     public function down()
     {
-        $this->dropForeignKey('FK-NAME-NAME-GROUP-GROUP', self::$_tableName);
         $this->dropTable(self::$_tableName);
     }
 }

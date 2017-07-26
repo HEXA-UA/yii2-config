@@ -17,5 +17,9 @@ use hexa\yiiconfig\tests\unit\TestUnit;
  */
 class DbProviderTest extends TestUnit
 {
+    public function testInitialize()
+    {
+
+    }
 
 }

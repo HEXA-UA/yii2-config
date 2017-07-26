@@ -14,9 +14,9 @@ use hexa\yiiconfig\actions\CreateAction;
 use hexa\yiiconfig\actions\DeleteAction;
 use hexa\yiiconfig\actions\IndexAction;
 use hexa\yiiconfig\actions\UpdateAction;
-use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\models\search\SettingSearch;
 use hexa\yiiconfig\models\Setting;
+use hexa\yiiconfig\services\KeyService;
 
 /**
  * Class SettingController
@@ -24,13 +24,32 @@ use hexa\yiiconfig\models\Setting;
 class SettingController extends Controller
 {
     /**
+     * @var KeyService
+     */
+    protected $service;
+
+    /**
+     * SettingController constructor.
+     *
+     * @param KeyService $service
+     *
+     * @inheritdoc
+     */
+    public function __construct($id, $module, KeyService $service, $config = [])
+    {
+        parent::__construct($id, $module, $config = []);
+
+        $this->service = $service;
+    }
+
+    /**
      * @inheritdoc
      */
     public function actions()
     {
         $className = Setting::className();
         $params    = [
-            'keys' => Key::list()
+            'keys' => $this->service->list()
         ];
 
         return [

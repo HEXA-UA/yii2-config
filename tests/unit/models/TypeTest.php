@@ -10,7 +10,6 @@
 
 namespace hexa\yiiconfig\tests\unit\traits;
 
-use Codeception\Specify;
 use hexa\yiiconfig\models\Type;
 use hexa\yiiconfig\tests\unit\TestUnit;
 
@@ -19,16 +18,6 @@ use hexa\yiiconfig\tests\unit\TestUnit;
  */
 class TypeTest extends TestUnit
 {
-    use Specify;
-
-    /**
-     * Test that type list is not empty.
-     */
-    public function testList()
-    {
-        verify(Type::list())->greaterThan(1);
-    }
-
     /**
      * Verify table name.
      */

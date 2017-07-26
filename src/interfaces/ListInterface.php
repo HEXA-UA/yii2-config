@@ -16,7 +16,7 @@ namespace hexa\yiiconfig\interfaces;
 interface ListInterface
 {
     /**
-     * @return mixed
+     * @return array
      */
-    public static function list();
+    public function list();
 }

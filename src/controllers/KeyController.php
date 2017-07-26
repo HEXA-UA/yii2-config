@@ -14,10 +14,10 @@ use hexa\yiiconfig\actions\CreateAction;
 use hexa\yiiconfig\actions\DeleteAction;
 use hexa\yiiconfig\actions\IndexAction;
 use hexa\yiiconfig\actions\UpdateAction;
-use hexa\yiiconfig\models\Group;
 use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\models\search\KeySearch;
-use hexa\yiiconfig\models\Type;
+use hexa\yiiconfig\services\GroupService;
+use hexa\yiiconfig\services\TypeService;
 
 /**
  * Class KeyController
@@ -25,14 +25,40 @@ use hexa\yiiconfig\models\Type;
 class KeyController extends Controller
 {
     /**
+     * @var TypeService
+     */
+    protected $typeService;
+
+    /**
+     * @var GroupService
+     */
+    protected $groupService;
+
+    /**
+     * KeyController constructor.
+     *
+     * @param TypeService  $typeService
+     * @param GroupService $groupService
+     *
+     * @inheritdoc
+     */
+    public function __construct($id, $module, TypeService $typeService, GroupService $groupService, $config = [])
+    {
+        parent::__construct($id, $module, $config);
+
+        $this->typeService  = $typeService;
+        $this->groupService = $groupService;
+    }
+
+    /**
      * @inheritdoc
      */
     public function actions()
     {
         $className = Key::className();
         $params    = [
-            'types'  => Type::list(),
-            'groups' => Group::list(),
+            'types'  => $this->typeService->list(),
+            'groups' => $this->groupService->list(),
         ];
 
         return [

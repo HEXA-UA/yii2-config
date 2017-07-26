@@ -1,6 +1,6 @@
 <?php
 /**
- * GroupTest
+ * GroupService
  * @version     1.0
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
@@ -8,21 +8,22 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\traits;
+namespace hexa\yiiconfig\services;
 
+use hexa\yiiconfig\interfaces\ListInterface;
 use hexa\yiiconfig\models\Group;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use yii\base\Object;
 
 /**
- * Trait GroupTest
+ * Class GroupService
  */
-class GroupTest extends TestUnit
+class GroupService extends Object implements ListInterface
 {
     /**
-     * Verify table name.
+     * @return array
      */
-    public function testTableName()
+    public function list()
     {
-        verify(Group::tableName())->equals('{{%settings_groups}}');
+        return Group::find()->indexBy('name')->column();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SettingQueryTest
+ * Group update view
  * @version     1.0
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
@@ -8,13 +8,12 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\db;
+use yii\helpers\Html;
 
-use hexa\yiiconfig\tests\unit\TestUnit;
-
-/**
- * Class SettingQueryTest
- */
-class SettingQueryTest extends TestUnit
-{
-}
+echo Html::beginTag('div', [
+    'class' => 'update-key js-update-key'
+]);
+echo $this->context->renderPartial('_form', [
+    'model'  => $model
+]);
+echo Html::endTag('div');

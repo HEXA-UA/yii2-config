@@ -1,6 +1,6 @@
 <?php
 /**
- * SettingValidatorServices
+ * KeyService
  * @version     1.0
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
@@ -10,18 +10,20 @@
 
 namespace hexa\yiiconfig\services;
 
-use hexa\yiiconfig\interfaces\SettingInterface;
+use hexa\yiiconfig\interfaces\ListInterface;
+use hexa\yiiconfig\models\Key;
 use yii\base\Object;
 
 /**
- * Class SettingValidatorService
+ * Class KeyService
  */
-class SettingValidatorService extends Object
+class KeyService extends Object implements ListInterface
 {
     /**
-     * @param SettingInterface $setting
+     * @return array
      */
-    public function validate(SettingInterface $setting)
+    public function list()
     {
+        return Key::find()->indexBy('name')->column();
     }
 }

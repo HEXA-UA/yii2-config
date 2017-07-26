@@ -10,15 +10,11 @@
 
 namespace hexa\yiiconfig\models;
 
-use hexa\yiiconfig\interfaces\ListInterface;
-
 /**
- * This is the model class for table "groups".
- *
  * @property integer $id
  * @property string  $name
  */
-class Type extends ActiveRecord implements ListInterface
+class Type extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -26,23 +22,6 @@ class Type extends ActiveRecord implements ListInterface
     public static function tableName()
     {
         return '{{%types}}';
-    }
-
-    /**
-     * Return list of groups
-     * @return array
-     */
-    public static function list()
-    {
-        return [
-            'string'  => 'string',
-            'integer' => 'integer',
-            'boolean' => 'boolean',
-            'float'   => 'number',
-            'email'   => 'email',
-            'ip'      => 'ip',
-            'url'     => 'url',
-        ];
     }
 
     /**

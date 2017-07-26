@@ -10,6 +10,10 @@
 
 namespace hexa\yiiconfig;
 
+use hexa\yiiconfig\services\GroupService;
+use hexa\yiiconfig\services\KeyService;
+use hexa\yiiconfig\services\TypeService;
+
 /**
  * Class Module
  */
@@ -48,5 +52,18 @@ class Module extends \yii\base\Module
 
         \Yii::setAlias('@yiiconfig', __DIR__);
         \Yii::configure($this, require(__DIR__ . '/config/main.php'));
+
+        $this->registerServices();
+    }
+
+    /**
+     * Register services.
+     */
+    protected function registerServices()
+    {
+        \Yii::$container->setSingleton('hexa\yiiconfig\services\KeyService', KeyService::className());
+        \Yii::$container->setSingleton('hexa\yiiconfig\services\GroupService', GroupService::className());
+        \Yii::$container->setSingleton('hexa\yiiconfig\services\TypeService', TypeService::className());
+        \Yii::$container->setSingleton('hexa\yiiconfig\services\SettingService', TypeService::className());
     }
 }

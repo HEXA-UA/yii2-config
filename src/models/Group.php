@@ -11,7 +11,6 @@
 namespace hexa\yiiconfig\models;
 
 use hexa\yiiconfig\interfaces\GroupInterface;
-use hexa\yiiconfig\interfaces\ListInterface;
 
 /**
  * This is the model class for table "groups".
@@ -19,7 +18,7 @@ use hexa\yiiconfig\interfaces\ListInterface;
  * @property integer $id
  * @property string  $name
  */
-class Group extends ActiveRecord implements GroupInterface, ListInterface
+class Group extends ActiveRecord implements GroupInterface
 {
     /**
      * CORE group unique name.
@@ -49,22 +48,35 @@ class Group extends ActiveRecord implements GroupInterface, ListInterface
     }
 
     /**
-     * Return list of groups
-     * @return array
-     */
-    public static function list()
-    {
-        return [
-            static::CORE => static::CORE
-        ];
-    }
-
-    /**
      * Returns unique group name.
      * @return string
      */
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+
+        return !($this->getOldAttribute('name') === static::CORE);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        return !($this->name === static::CORE);
     }
 }

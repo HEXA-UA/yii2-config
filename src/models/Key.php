@@ -12,8 +12,8 @@ namespace hexa\yiiconfig\models;
 
 use hexa\yiiconfig\db\KeyQuery;
 use hexa\yiiconfig\interfaces\KeyInterface;
-use hexa\yiiconfig\interfaces\ListInterface;
-use yii\helpers\ArrayHelper;
+use hexa\yiiconfig\services\GroupService;
+use hexa\yiiconfig\services\TypeService;
 
 /**
  * This is the model class for table "keys".
@@ -24,7 +24,7 @@ use yii\helpers\ArrayHelper;
  * @property string  $type
  * @property string  $description
  */
-class Key extends ActiveRecord implements KeyInterface, ListInterface
+class Key extends ActiveRecord implements KeyInterface
 {
     /**
      * @inheritdoc
@@ -33,8 +33,8 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
     public function rules()
     {
         return [
-            ['group', 'in', 'range' => Group::list()],
-            ['type', 'in', 'range' => Type::list()],
+            ['group', 'in', 'range' => \Yii::$container->get(GroupService::className())->list()],
+            ['type', 'in', 'range' => \Yii::$container->get(TypeService::className())->list()],
             [['group', 'type', 'name'], 'required'],
             ['description', 'string', 'max' => 1000]
         ];
@@ -86,13 +86,5 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
     public static function find()
     {
         return \Yii::createObject(KeyQuery::className(), [get_called_class()]);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function list()
-    {
-        return ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
     }
 }

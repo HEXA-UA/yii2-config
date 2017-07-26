@@ -32,7 +32,6 @@ class SettingTest extends TestUnit
 
         verify($setting->getName())->equals('setting-name');
         verify($setting->getValue())->equals('setting-value');
-        verify($setting->getGroup())->equals('setting-group');
         verify($setting->getType())->equals('key-type');
         verify($setting->getDescription())->equals('key-description');
         verify($setting->getKey())->isInstanceOf(Key::className());
@@ -61,7 +60,7 @@ class SettingTest extends TestUnit
 
         $setting->setAttributes([
             'name'  => 'setting-name',
-            'value' => 'setting-value'
+            'value' => 'setting-value',
         ]);
 
         codecept_debug($setting->getAttributes());

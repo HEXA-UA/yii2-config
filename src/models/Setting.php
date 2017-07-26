@@ -35,7 +35,7 @@ class Setting extends ActiveRecord implements SettingInterface
     public function rules()
     {
         return [
-            [['group', 'name'], 'unique'],
+            [['name'], 'unique'],
             ['name', 'required'],
             ['name', 'exist', 'targetClass' => Key::className()],
             ['value', 'safe'],
@@ -71,7 +71,7 @@ class Setting extends ActiveRecord implements SettingInterface
      */
     public function getGroup()
     {
-        return $this->group;
+        return $this->key->group;
     }
 
     /**

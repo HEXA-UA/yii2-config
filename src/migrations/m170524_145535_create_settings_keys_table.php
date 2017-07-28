@@ -30,7 +30,6 @@ class m170524_145535_create_settings_keys_table extends Migration
         }
 
         $this->createTable(self::$_tableName, [
-            'group'       => $this->string(255)->notNull(),
             'name'        => $this->string(255)->notNull(),
             'type'        => $this->string(255)->notNull(),
             'description' => $this->string(1000)->notNull(),
@@ -40,18 +39,8 @@ class m170524_145535_create_settings_keys_table extends Migration
         $this->createIndex(
             'INX-GROUP-NAME-UNQ',
             self::$_tableName,
-            ['group', 'name'],
-            true
-        );
-
-        $this->addForeignKey(
-            'FK-KEY_GROUP-GROUP_NAME',
-            self::$_tableName,
-            'group',
-            self::$_refTableName,
             'name',
-            'RESTRICT',
-            'RESTRICT'
+            true
         );
     }
 

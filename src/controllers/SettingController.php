@@ -16,6 +16,7 @@ use hexa\yiiconfig\actions\IndexAction;
 use hexa\yiiconfig\actions\UpdateAction;
 use hexa\yiiconfig\models\search\SettingSearch;
 use hexa\yiiconfig\models\Setting;
+use hexa\yiiconfig\services\GroupService;
 use hexa\yiiconfig\services\KeyService;
 
 /**
@@ -26,20 +27,27 @@ class SettingController extends Controller
     /**
      * @var KeyService
      */
-    protected $service;
+    protected $keyService;
+
+    /**
+     * @var GroupService
+     */
+    protected $groupService;
 
     /**
      * SettingController constructor.
      *
-     * @param KeyService $service
+     * @param KeyService   $keyService
+     * @param GroupService $groupService
      *
      * @inheritdoc
      */
-    public function __construct($id, $module, KeyService $service, $config = [])
+    public function __construct($id, $module, KeyService $keyService, GroupService $groupService, $config = [])
     {
         parent::__construct($id, $module, $config = []);
 
-        $this->service = $service;
+        $this->keyService   = $keyService;
+        $this->groupService = $groupService;
     }
 
     /**
@@ -49,7 +57,8 @@ class SettingController extends Controller
     {
         $className = Setting::className();
         $params    = [
-            'keys' => $this->service->list()
+            'keys'   => $this->keyService->list(),
+            'groups' => $this->groupService->list()
         ];
 
         return [

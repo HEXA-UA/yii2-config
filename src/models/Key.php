@@ -33,9 +33,8 @@ class Key extends ActiveRecord implements KeyInterface
     public function rules()
     {
         return [
-            ['group', 'in', 'range' => \Yii::$container->get(GroupService::className())->list()],
             ['type', 'in', 'range' => \Yii::$container->get(TypeService::className())->list()],
-            [['group', 'type', 'name'], 'required'],
+            [['type', 'name'], 'required'],
             ['description', 'string', 'max' => 1000]
         ];
     }
@@ -54,14 +53,6 @@ class Key extends ActiveRecord implements KeyInterface
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getGroup()
-    {
-        return $this->group;
     }
 
     /**

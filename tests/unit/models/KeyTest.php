@@ -31,25 +31,22 @@ class KeyTest extends TestUnit
 
         $key->expects($this->any())
             ->method('attributes')
-            ->willReturn(['name', 'group', 'type', 'description']);
+            ->willReturn(['name', 'type', 'description']);
         $key->expects($this->any())
             ->method('safeAttributes')
-            ->willReturn(['name', 'group', 'type', 'description']);
+            ->willReturn(['name', 'type', 'description']);
 
         $key->setAttributes([
             'name'        => 'key-name',
-            'group'       => 'key-group',
             'type'        => 'key-type',
             'description' => 'key-description',
         ]);
 
         codecept_debug($key->getName());
-        codecept_debug($key->getGroup());
         codecept_debug($key->getType());
         codecept_debug($key->getDescription());
 
         verify($key->getName())->equals('key-name');
-        verify($key->getGroup())->equals('key-group');
         verify($key->getType())->equals('key-type');
         verify($key->getDescription())->equals('key-description');
     }

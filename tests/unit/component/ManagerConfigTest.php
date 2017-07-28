@@ -38,11 +38,28 @@ class ManagerConfigTest extends TestUnit
     }
 
     /**
+     * Test creating providers.
+     */
+    public function testCreateProviders()
+    {
+        $this->specify("Manager can create ArrayProvider", function() {
+
+        });
+
+        $this->specify("Manager can create DBProvider", function() {
+
+        });
+    }
+
+    /**
      * Return instance of config manager.
+     *
+     * @param array $config
+     *
      * @return ManagerConfig
      */
-    protected function getManager()
+    protected function getManager($config = [])
     {
-        return new ManagerConfig();
+        return new ManagerConfig($config);
     }
 }

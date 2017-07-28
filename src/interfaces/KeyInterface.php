@@ -23,11 +23,6 @@ interface KeyInterface
     /**
      * @return string
      */
-    public function getGroup();
-
-    /**
-     * @return string
-     */
     public function getType();
 
     /**

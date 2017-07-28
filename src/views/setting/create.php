@@ -16,13 +16,15 @@ use yii\web\View;
  * @var View    $this
  * @var Setting $model
  * @var array   $keys
+ * @var array   $groups
  */
 
 echo Html::beginTag('div', [
     'class' => 'create-setting js-create-setting'
 ]);
 echo $this->context->renderPartial('_form', [
-    'model' => $model,
-    'keys'  => $keys
+    'model'  => $model,
+    'keys'   => $keys,
+    'groups' => $groups
 ]);
 echo Html::endTag('div');

@@ -11,7 +11,6 @@
 namespace hexa\yiiconfig\models;
 
 use hexa\yiiconfig\db\SettingQuery;
-use hexa\yiiconfig\interfaces\ListInterface;
 use hexa\yiiconfig\interfaces\SettingInterface;
 use yii\base\DynamicModel;
 use yii\behaviors\AttributeBehavior;
@@ -35,10 +34,21 @@ class Setting extends ActiveRecord implements SettingInterface
     public function rules()
     {
         return [
-            [['name'], 'unique'],
             ['name', 'required'],
-            ['name', 'exist', 'targetClass' => Key::className()],
             ['value', 'safe'],
+            [
+                'group',
+                'exist',
+                'targetClass'     => Group::className(),
+                'targetAttribute' => 'name'
+            ],
+            [
+                'name',
+                'exist',
+                'targetClass'     => Key::className(),
+                'targetAttribute' => 'name'
+            ],
+            ['name', 'unique', 'targetAttribute' => ['group', 'name']],
         ];
     }
 
@@ -71,7 +81,7 @@ class Setting extends ActiveRecord implements SettingInterface
      */
     public function getGroup()
     {
-        return $this->key->group;
+        return $this->group;
     }
 
     /**

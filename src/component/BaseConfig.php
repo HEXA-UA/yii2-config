@@ -55,19 +55,9 @@ abstract class BaseConfig extends Component implements ConfigInterface
     /**
      * @inheritdoc
      */
-    public function init()
-    {
-        parent::init();
-
-        $this->getProvider()->initialize();
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function get($key, $default = null)
     {
-        return $this->provider->get($key, $default);
+        return $this->getProvider()->get($key, $default);
     }
 
     /**

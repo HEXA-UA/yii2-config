@@ -42,13 +42,6 @@ class DbProvider extends BaseProvider implements ProviderInterface
     public $tableName = '{{%settings}}';
 
     /**
-     * @var string Class name that implements QueryInterface and QueryTrait
-     * @see QueryInterface
-     * @see QueryTrait
-     */
-    public $queryClass = 'yii\db\Query';
-
-    /**
      * @inheritdoc
      */
     public function init()

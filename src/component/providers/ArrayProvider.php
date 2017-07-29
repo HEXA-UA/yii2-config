@@ -10,6 +10,8 @@
 
 namespace hexa\yiiconfig\component\providers;
 
+use yii\helpers\ArrayHelper;
+
 /**
  * Class ArrayProvider
  */
@@ -38,7 +40,7 @@ class ArrayProvider extends BaseProvider
      */
     public function get($key, $default = null)
     {
-        return isset($this->data[$key]) ? $this->data[$key] : $default;
+        return ArrayHelper::getValue($this->data, $key, $default);
     }
 
     /**

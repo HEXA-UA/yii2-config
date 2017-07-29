@@ -21,15 +21,23 @@ use yii\base\Component;
  * [
  *     'components' => [
  *          'config' => [
- *               'providerConfig' => hexa\yiiconfig\providers\DbProvider
+ *               'providerConfig' => hexa\yiiconfig\component\providers\DbProvider
  *
  *               // OR you can configure it
  *
  *               'providerConfig' => [
- *                    'class'      => 'hexa\yiiconfig\providers\DbProvider',
- *                    'queryClass' => 'yii\db\Query',
+ *                    'class'      => 'hexa\yiiconfig\component\providers\DbProvider',
  *                    'tableName'  => '{{%settings}}'
  *                ],
+ *
+ *              // Pass some arguments to constructor
+ *
+ *              'providerConfig' => 'hexa\yiiconfig\component\providers\ArrayProvider',
+ *              'providerParams' => [
+ *                  'data' => [
+ *                      'siteName' => 'Test it'
+ *                  ]
+ *              ]
  *          ]
  *     ]
  * ]
@@ -46,6 +54,12 @@ abstract class BaseConfig extends Component implements ConfigInterface
      * @var string
      */
     public $providerConfig = 'hexa\yiiconfig\component\providers\ArrayProvider';
+
+    /**
+     * Params that will be passed to constructor.
+     * @var array
+     */
+    public $providerParams = [];
 
     /**
      * @var ProviderInterface Instance of provider.
@@ -66,7 +80,7 @@ abstract class BaseConfig extends Component implements ConfigInterface
     public function getProvider()
     {
         if (!$this->provider) {
-            $this->provider = \Yii::createObject($this->providerConfig);
+            $this->provider = \Yii::createObject($this->providerConfig, $this->providerParams);
         }
 
         return $this->provider;

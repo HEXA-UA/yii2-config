@@ -17,6 +17,7 @@ use hexa\yiiconfig\services\GroupService;
 use hexa\yiiconfig\services\KeyService;
 use hexa\yiiconfig\services\SettingService;
 use hexa\yiiconfig\services\TypeService;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class TestUnit
@@ -43,5 +44,32 @@ class TestUnit extends Unit
         \Yii::$container->setSingleton('hexa\yiiconfig\services\GroupService', GroupService::className());
         \Yii::$container->setSingleton('hexa\yiiconfig\services\TypeService', TypeService::className());
         \Yii::$container->setSingleton('hexa\yiiconfig\services\SettingService', SettingService::className());
+    }
+
+    /**
+     * @param array  $config
+     * @param string $appClass
+     */
+    protected function mockApplication($config = [], $appClass = '\yii\web\Application')
+    {
+        new $appClass(ArrayHelper::merge([
+            'id'         => 'UnitTests',
+            'basePath'   => __DIR__,
+            'vendorPath' => $this->getVendorPath(),
+            'components' => [
+                'db' => [
+                    'class' => 'yii\db\Connection',
+                    'dsn'   => 'sqlite::memory:',
+                ],
+            ],
+        ], $config));
+    }
+
+    /**
+     * @return string
+     */
+    protected function getVendorPath()
+    {
+        return dirname(__DIR__) . '/vendor';
     }
 }

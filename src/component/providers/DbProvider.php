@@ -10,10 +10,8 @@
 
 namespace hexa\yiiconfig\component\providers;
 
+use yii\base\InvalidParamException;
 use yii\db\Connection;
-use yii\db\QueryInterface;
-use yii\db\QueryTrait;
-use yii\di\Instance;
 
 
 /**
@@ -22,9 +20,19 @@ use yii\di\Instance;
 class DbProvider extends BaseProvider implements ProviderInterface
 {
     /**
+     * Key delimiter
+     */
+    const DELIMITER = '.';
+
+    /**
      * @var Connection|array|string the DB connection object or component ID of the DB connection.
      */
     public $db = 'db';
+
+    /**
+     * @var string Table column that represent setting key.
+     */
+    public $groupAttribute = 'group';
 
     /**
      * @var string Table column that represent setting key.
@@ -46,7 +54,7 @@ class DbProvider extends BaseProvider implements ProviderInterface
      */
     public function init()
     {
-        $this->db = \Yii::$app->get('db');
+        $this->db = \Yii::$app->get($this->db);
 
         parent::init();
     }
@@ -56,16 +64,6 @@ class DbProvider extends BaseProvider implements ProviderInterface
      */
     public function initialize()
     {
-        $data = $this->db
-            ->createCommand("
-                  SELECT
-                     $this->valueAttribute
-                  FROM 
-                     $this->tableName
-            ")
-            ->queryAll();
-
-        return $data;
     }
 
     /**
@@ -73,15 +71,20 @@ class DbProvider extends BaseProvider implements ProviderInterface
      */
     public function get($key, $default = null)
     {
+        list($group, $key) = $this->extractGroup($key);
+
         $value = $this->db
             ->createCommand("
                   SELECT
-                     $this->valueAttribute
+                      $this->valueAttribute
                   FROM 
-                     $this->tableName
-                  WHERE 
-                     $this->keyAttribute=:key
+                      $this->tableName
+                  WHERE
+                      $this->groupAttribute=:group
+                  AND
+                      $this->keyAttribute=:key
             ")
+            ->bindValue(':group', $group)
             ->bindValue(':key', $key)
             ->queryScalar();
 
@@ -90,5 +93,23 @@ class DbProvider extends BaseProvider implements ProviderInterface
         }
 
         return $value;
+    }
+
+    /**
+     * Extract group form the key and return both values as array.
+     * First value is group and the second is key.
+     *
+     * @param string $string Full key with group.
+     *
+     * @return array
+     * @throws InvalidParamException
+     */
+    protected function extractGroup($string)
+    {
+        if (strpos($string, static::DELIMITER) === false) {
+            throw new InvalidParamException("Can not extract group in key {$string}");
+        }
+
+        return explode($string, static::DELIMITER, 1);
     }
 }

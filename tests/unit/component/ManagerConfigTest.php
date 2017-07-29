@@ -42,12 +42,29 @@ class ManagerConfigTest extends TestUnit
      */
     public function testCreateProviders()
     {
-        $this->specify("Manager can create ArrayProvider", function() {
+        $this->specify("Manager can create ArrayProvider", function () {
+            $manager = $this->getManager([
+                'providerConfig' => 'hexa\yiiconfig\component\providers\ArrayProvider',
+                'providerParams' => [
+                    'data' => [
+                        'siteName' => 'Test it'
+                    ]
+                ]
+            ]);
 
+            verify($manager->getProvider())->isInstanceOf('hexa\yiiconfig\component\providers\ArrayProvider');
         });
 
-        $this->specify("Manager can create DBProvider", function() {
+        $this->beforeSpecify(function () {
+            $this->mockApplication();
+        });
 
+        $this->specify("Manager can create DBProvider", function () {
+            $manager = $this->getManager([
+                'providerConfig' => 'hexa\yiiconfig\component\providers\DbProvider'
+            ]);
+
+            verify($manager->getProvider())->isInstanceOf('hexa\yiiconfig\component\providers\DbProvider');
         });
     }
 

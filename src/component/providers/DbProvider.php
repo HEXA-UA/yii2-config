@@ -37,7 +37,7 @@ class DbProvider extends BaseProvider implements ProviderInterface
     /**
      * @var string Table column that represent setting key.
      */
-    public $keyAttribute = 'key';
+    public $keyAttribute = 'name';
 
     /**
      * @var string Table column that represent setting value.
@@ -76,13 +76,13 @@ class DbProvider extends BaseProvider implements ProviderInterface
         $value = $this->db
             ->createCommand("
                   SELECT
-                      $this->valueAttribute
+                      `$this->valueAttribute`
                   FROM 
                       $this->tableName
                   WHERE
-                      $this->groupAttribute=:group
+                      `$this->groupAttribute` = :group
                   AND
-                      $this->keyAttribute=:key
+                      `$this->keyAttribute` = :key
             ")
             ->bindValue(':group', $group)
             ->bindValue(':key', $key)
@@ -104,12 +104,12 @@ class DbProvider extends BaseProvider implements ProviderInterface
      * @return array
      * @throws InvalidParamException
      */
-    protected function extractGroup($string)
+    public function extractGroup($string)
     {
         if (strpos($string, static::DELIMITER) === false) {
             throw new InvalidParamException("Can not extract group in key {$string}");
         }
 
-        return explode($string, static::DELIMITER, 1);
+        return explode(static::DELIMITER, $string, 2);
     }
 }

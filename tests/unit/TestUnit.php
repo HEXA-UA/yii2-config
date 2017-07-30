@@ -57,10 +57,11 @@ class TestUnit extends Unit
             'basePath'   => __DIR__,
             'vendorPath' => $this->getVendorPath(),
             'components' => [
-                'db' => [
+                'db'    => [
                     'class' => 'yii\db\Connection',
                     'dsn'   => 'sqlite::memory:',
                 ],
+                'cache' => 'yii\caching\DummyCache'
             ],
         ], $config));
     }

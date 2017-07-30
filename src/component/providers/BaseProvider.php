@@ -17,4 +17,19 @@ use yii\base\Object;
  */
 abstract class BaseProvider extends Object implements ProviderInterface
 {
+    /**
+     * @inheritdoc
+     */
+    public function get($key, $default = null)
+    {
+        return $this->getValue($key, $default);
+    }
+
+    /**
+     * @param string $key
+     * @param null   $default
+     *
+     * @return mixed
+     */
+    abstract protected function getValue($key, $default = null);
 }

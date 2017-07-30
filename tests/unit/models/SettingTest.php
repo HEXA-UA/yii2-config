@@ -30,6 +30,7 @@ class SettingTest extends TestUnit
     {
         $setting = $this->getMockedSetting();
 
+        verify($setting->getGroup())->equals('setting-group');
         verify($setting->getName())->equals('setting-name');
         verify($setting->getValue())->equals('setting-value');
         verify($setting->getType())->equals('key-type');
@@ -54,13 +55,14 @@ class SettingTest extends TestUnit
         $setting = $this->getMockedClass(Setting::className(), ['attributes', 'safeAttributes', 'hasOne', 'rules']);
 
         $setting->expects($this->any())->method('rules')->willReturn([]);
-        $setting->expects($this->any())->method('attributes')->willReturn(['name', 'value']);
-        $setting->expects($this->any())->method('safeAttributes')->willReturn(['name', 'value']);
+        $setting->expects($this->any())->method('attributes')->willReturn(['group','name', 'value']);
+        $setting->expects($this->any())->method('safeAttributes')->willReturn(['group','name', 'value']);
         $setting->expects($this->any())->method('hasOne')->willReturn($this->getMockedKey());
 
         $setting->setAttributes([
+            'group' => 'setting-group',
             'name'  => 'setting-name',
-            'value' => 'setting-value',
+            'value' => 'setting-value'
         ]);
 
         codecept_debug($setting->getAttributes());

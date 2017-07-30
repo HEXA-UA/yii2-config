@@ -38,7 +38,7 @@ class ArrayProvider extends BaseProvider
     /**
      * @inheritdoc
      */
-    public function get($key, $default = null)
+    public function getValue($key, $default = null)
     {
         return ArrayHelper::getValue($this->data, $key, $default);
     }

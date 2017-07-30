@@ -17,7 +17,7 @@ use yii\db\Connection;
 /**
  * Class DbProvider
  */
-class DbProvider extends BaseProvider implements ProviderInterface
+class DbProvider extends CacheProvider
 {
     /**
      * Key delimiter
@@ -69,7 +69,7 @@ class DbProvider extends BaseProvider implements ProviderInterface
     /**
      * @inheritdoc
      */
-    public function get($key, $default = null)
+    public function getValue($key, $default = null)
     {
         list($group, $key) = $this->extractGroup($key);
 

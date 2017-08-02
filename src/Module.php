@@ -1,7 +1,7 @@
 <?php
 /**
  * Config module
- * @version     1.0
+ * @version     1.0.0-alpha.3
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -22,7 +22,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $version = '1.0.0';
+    public $version = '1.0.0-alpha.2';
 
     /**
      * @inheritdoc
@@ -59,7 +59,7 @@ class Module extends \yii\base\Module
     /**
      * Register services.
      */
-    protected function registerServices()
+    public function registerServices()
     {
         \Yii::$container->setSingleton('hexa\yiiconfig\services\KeyService', KeyService::className());
         \Yii::$container->setSingleton('hexa\yiiconfig\services\GroupService', GroupService::className());

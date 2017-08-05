@@ -1,7 +1,7 @@
 <?php
 /**
  * BaseConfig
- * @version     1.0.0-alpha.3
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -21,7 +21,8 @@ use yii\base\Component;
  * [
  *     'components' => [
  *          'config' => [
- *               'providerConfig' => hexa\yiiconfig\component\providers\DbProvider
+ *               'class'          => 'hexa\yiiconfig\component\ManagerConfig',
+ *               'providerConfig' => 'hexa\yiiconfig\component\providers\DbProvider'
  *
  *               // OR you can configure it
  *

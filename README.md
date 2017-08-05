@@ -24,3 +24,16 @@ php yii migrate --migrationPath=@hexa/yiiconfig/migrations
 ```
 
 ## Usage
+```php 
+[
+    'components' => [
+        'config' => [
+              'class'          => 'hexa\yiiconfig\component\ManagerConfig',
+              'providerConfig' => [
+                  'class'    => 'hexa\yiiconfig\component\providers\DbProvider',
+                  'duration' => 3600 // Cache duration in seconds
+              ]
+        ]
+    ]
+]
+```

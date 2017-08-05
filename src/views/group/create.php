@@ -1,7 +1,7 @@
 <?php
 /**
  * Group create view
- * @version     1.0.0-alpha.3
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -19,7 +19,7 @@ use yii\web\View;
  */
 
 echo Html::beginTag('div', [
-    'class' => 'create-setting js-create-setting'
+    'class' => 'group-form-container hexa-form-container js-group-form-container js-hexa-form-container'
 ]);
 echo $this->context->renderPartial('_form', [
     'model' => $model,

@@ -1,6 +1,6 @@
 <?php
 /**
- * SettingQuery
+ * Group tools view
  * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
@@ -8,11 +8,6 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\db;
-
-/**
- * Class SettingQuery
- */
-class SettingQuery extends ActiveQuery
-{
-}
+echo \yii\helpers\Html::beginTag('div', ['class' => 'hexa-config-tools']);
+echo \yii\helpers\Html::a('Create', ['group/create'], ['class' => 'btn btn-success']);
+echo \yii\helpers\Html::endTag('div');

@@ -1,7 +1,7 @@
 <?php
 /**
  * Key model
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -12,9 +12,8 @@ namespace hexa\yiiconfig\models;
 
 use hexa\yiiconfig\db\KeyQuery;
 use hexa\yiiconfig\interfaces\KeyInterface;
-use hexa\yiiconfig\interfaces\ListInterface;
-use yii\db\ActiveRecord;
-use yii\helpers\ArrayHelper;
+use hexa\yiiconfig\services\GroupService;
+use hexa\yiiconfig\services\TypeService;
 
 /**
  * This is the model class for table "keys".
@@ -23,8 +22,9 @@ use yii\helpers\ArrayHelper;
  * @property string  $name
  * @property string  $group
  * @property string  $type
+ * @property string  $description
  */
-class Key extends ActiveRecord implements KeyInterface, ListInterface
+class Key extends ActiveRecord implements KeyInterface
 {
     /**
      * @inheritdoc
@@ -33,9 +33,9 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
     public function rules()
     {
         return [
-            ['group', 'in', 'range' => Group::list()],
-            ['type', 'in', 'range' => Type::list()],
-            [['group', 'type', 'name'], 'required']
+            ['type', 'in', 'range' => \Yii::$container->get(TypeService::className())->list()],
+            [['type', 'name'], 'required'],
+            ['description', 'string', 'max' => 1000]
         ];
     }
 
@@ -58,9 +58,9 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
     /**
      * @inheritdoc
      */
-    public function getGroup()
+    public function getDescription()
     {
-        return $this->group;
+        return $this->description;
     }
 
     /**
@@ -68,23 +68,14 @@ class Key extends ActiveRecord implements KeyInterface, ListInterface
      */
     public static function tableName()
     {
-        return '{{%keys}}';
+        return '{{%settings_keys}}';
     }
 
     /**
      * @inheritdoc
-     * @return KeyQuery
      */
     public static function find()
     {
-        return new KeyQuery(get_called_class());
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function list()
-    {
-        return ArrayHelper::map(static::find()->asArray()->all(), 'name', 'name');
+        return \Yii::createObject(KeyQuery::className(), [get_called_class()]);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * ActiveQuery
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -10,12 +10,12 @@
 
 namespace hexa\yiiconfig\db;
 
-use \yii\db\ActiveQuery as SuperActiveQuery;
+use \yii\db\ActiveQuery as BaseActiveQuery;
 
 /**
  * Class ActiveQuery
  */
-class ActiveQuery extends SuperActiveQuery
+class ActiveQuery extends BaseActiveQuery
 {
     /**
      * @param $attribute

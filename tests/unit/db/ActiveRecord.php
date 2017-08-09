@@ -1,20 +1,20 @@
 <?php
 /**
- * AbstractConfig
- * @version     1.0
+ * ActiveRecord
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\components\config;
+namespace hexa\yiiconfig\tests\unit\db;
 
-use yii\base\Component;
+use yii\db\ActiveRecord as BaseActiveRecord;
 
 /**
- * Class AbstractConfig
+ * Class ActiveRecord
  */
-abstract class AbstractConfig extends Component implements ConfigInterface
+class ActiveRecord extends BaseActiveRecord
 {
 }

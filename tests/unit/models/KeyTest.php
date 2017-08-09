@@ -1,7 +1,7 @@
 <?php
 /**
  * KeyTest
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -13,9 +13,10 @@ namespace hexa\yiiconfig\tests\unit\traits;
 use Codeception\Specify;
 use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\tests\unit\TestUnit;
+use yii\db\ActiveQueryInterface;
 
 /**
- * Trait KeyTest
+ * Class KeyTest
  */
 class KeyTest extends TestUnit
 {
@@ -26,24 +27,36 @@ class KeyTest extends TestUnit
      */
     public function testGetAttributes()
     {
-        $key = $this->getMockedClass(Key::className(), ['attributes']);
+        $key = $this->getMockedClass(Key::className(), ['attributes', 'safeAttributes', 'rules']);
 
         $key->expects($this->any())
             ->method('attributes')
-            ->willReturn(['name', 'group', 'type']);
+            ->willReturn(['name', 'type', 'description']);
+        $key->expects($this->any())
+            ->method('safeAttributes')
+            ->willReturn(['name', 'type', 'description']);
 
         $key->setAttributes([
-            'name'  => 'key-name',
-            'group' => 'key-group',
-            'type'  => 'key-type',
+            'name'        => 'key-name',
+            'type'        => 'key-type',
+            'description' => 'key-description',
         ]);
+
         codecept_debug($key->getName());
-        codecept_debug($key->getGroup());
         codecept_debug($key->getType());
+        codecept_debug($key->getDescription());
 
         verify($key->getName())->equals('key-name');
-        verify($key->getGroup())->equals('key-group');
         verify($key->getType())->equals('key-type');
+        verify($key->getDescription())->equals('key-description');
+    }
+
+    /**
+     * Test static find method. Must return KeyQuery class.
+     */
+    public function testFind()
+    {
+        verify(Key::find())->isInstanceOf(ActiveQueryInterface::class);
     }
 
     /**
@@ -51,6 +64,6 @@ class KeyTest extends TestUnit
      */
     public function testTableName()
     {
-        verify(Key::tableName())->equals('{{%keys}}');
+        verify(Key::tableName())->equals('{{%settings_keys}}');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * Group model
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -10,8 +10,7 @@
 
 namespace hexa\yiiconfig\models;
 
-use hexa\yiiconfig\interfaces\ListInterface;
-use yii\db\ActiveRecord;
+use hexa\yiiconfig\interfaces\GroupInterface;
 
 /**
  * This is the model class for table "groups".
@@ -19,7 +18,7 @@ use yii\db\ActiveRecord;
  * @property integer $id
  * @property string  $name
  */
-class Group extends ActiveRecord implements ListInterface
+class Group extends ActiveRecord implements GroupInterface
 {
     /**
      * CORE group unique name.
@@ -31,7 +30,7 @@ class Group extends ActiveRecord implements ListInterface
      */
     public static function tableName()
     {
-        return '{{%groups}}';
+        return '{{%settings_groups}}';
     }
 
     /**
@@ -41,19 +40,43 @@ class Group extends ActiveRecord implements ListInterface
     public function rules()
     {
         return [
-            ['name', 'unique'],
             ['name', 'required'],
+            ['name', 'string', 'max' => 255],
+            ['name', 'filter', 'filter' => 'strtolower'],
+            ['name', 'unique'],
         ];
     }
 
     /**
-     * Return list of groups
-     * @return array
+     * Returns unique group name.
+     * @return string
      */
-    public static function list()
+    public function getName()
     {
-        return [
-            static::CORE => static::CORE
-        ];
+        return $this->name;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (!parent::beforeSave($insert)) {
+            return false;
+        }
+
+        return !($this->getOldAttribute('name') === static::CORE);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeDelete()
+    {
+        if (!parent::beforeDelete()) {
+            return false;
+        }
+
+        return !($this->name === static::CORE);
     }
 }

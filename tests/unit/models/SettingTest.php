@@ -1,7 +1,7 @@
 <?php
 /**
  * SettingTest
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -14,6 +14,7 @@ use Codeception\Specify;
 use hexa\yiiconfig\models\Key;
 use hexa\yiiconfig\models\Setting;
 use hexa\yiiconfig\tests\unit\TestUnit;
+use yii\db\ActiveQueryInterface;
 
 /**
  * Trait SettingTest
@@ -29,10 +30,11 @@ class SettingTest extends TestUnit
     {
         $setting = $this->getMockedSetting();
 
+        verify($setting->getGroup())->equals('setting-group');
         verify($setting->getName())->equals('setting-name');
         verify($setting->getValue())->equals('setting-value');
-        verify($setting->getType())->equals('setting-type');
-        verify($setting->getGroup())->equals('setting-group');
+        verify($setting->getType())->equals('key-type');
+        verify($setting->getDescription())->equals('key-description');
         verify($setting->getKey())->isInstanceOf(Key::className());
     }
 
@@ -53,13 +55,14 @@ class SettingTest extends TestUnit
         $setting = $this->getMockedClass(Setting::className(), ['attributes', 'safeAttributes', 'hasOne', 'rules']);
 
         $setting->expects($this->any())->method('rules')->willReturn([]);
-        $setting->expects($this->any())->method('attributes')->willReturn(['name', 'value']);
-        $setting->expects($this->any())->method('safeAttributes')->willReturn(['name', 'value']);
+        $setting->expects($this->any())->method('attributes')->willReturn(['group','name', 'value']);
+        $setting->expects($this->any())->method('safeAttributes')->willReturn(['group','name', 'value']);
         $setting->expects($this->any())->method('hasOne')->willReturn($this->getMockedKey());
 
         $setting->setAttributes([
+            'group' => 'setting-group',
             'name'  => 'setting-name',
-            'value' => 'setting-value',
+            'value' => 'setting-value'
         ]);
 
         codecept_debug($setting->getAttributes());
@@ -68,18 +71,27 @@ class SettingTest extends TestUnit
     }
 
     /**
+     * Test return value find method.
+     */
+    public function testFind()
+    {
+        verify(Setting::find())->isInstanceOf(ActiveQueryInterface::class);
+    }
+
+    /**
      * @return \PHPUnit_Framework_MockObject_MockObject
      */
     protected function getMockedKey()
     {
-        $key = $this->getMockedClass(Key::className(), ['attributes', 'safeAttributes']);
+        $key = $this->getMockedClass(Key::className(), ['attributes', 'safeAttributes', 'rules']);
 
-        $key->expects($this->any())->method('attributes')->willReturn(['group', 'type']);
-        $key->expects($this->any())->method('safeAttributes')->willReturn(['group', 'type']);
+        $key->expects($this->any())->method('rules')->willReturn([]);
+        $key->expects($this->any())->method('attributes')->willReturn(['group', 'type', 'description']);
+        $key->expects($this->any())->method('safeAttributes')->willReturn(['group', 'type', 'description']);
 
         $key->setAttributes([
-            'group' => 'setting-group',
-            'type'  => 'setting-type',
+            'type'        => 'key-type',
+            'description' => 'key-description'
         ]);
 
         return $key;

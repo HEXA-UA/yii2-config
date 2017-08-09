@@ -1,7 +1,7 @@
 <?php
 /**
  * CreateAction
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -10,6 +10,7 @@
 
 namespace hexa\yiiconfig\actions;
 
+use hexa\yiiconfig\models\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -41,6 +42,7 @@ class CreateAction extends BaseAction
      */
     public function run()
     {
+        /** @var ActiveRecord $model */
         $model = new $this->modelClass();
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             return call_user_func($this->callbackSuccess, $model);

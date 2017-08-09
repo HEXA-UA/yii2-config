@@ -1,7 +1,7 @@
 <?php
 /**
  * SearchTest
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -19,14 +19,25 @@ use hexa\yiiconfig\tests\unit\TestUnit;
 abstract class SearchTest extends TestUnit
 {
     /**
+     * @inheritdoc
+     */
+    protected function _before()
+    {
+        parent::_before();
+
+        $this->registerServices();
+    }
+
+    /**
      * Test instantiate dataProvider function
      */
     public function testGetDataProvider()
     {
         $modelClass = $this->getModelClass();
-        
+
         test::double($modelClass, ['find' => new \ArrayObject()]);
-        $key = new $modelClass([
+        $key = \Yii::createObject([
+            'class'             => $modelClass,
             'dataProviderClass' => \ArrayObject::class
         ]);
 

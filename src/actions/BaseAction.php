@@ -1,7 +1,7 @@
 <?php
 /**
  * BaseAction
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -40,7 +40,7 @@ abstract class BaseAction extends Action
      * Rendering params.
      * @var array
      */
-    public $params;
+    public $params = [];
 
     /**
      * @inheritdoc
@@ -56,7 +56,7 @@ abstract class BaseAction extends Action
 
         if (!is_callable($this->callbackSuccess)) {
             $this->callbackSuccess = function ($model) {
-                return $this->controller->redirect(['update', 'name' => $model->name]);
+                return $this->controller->redirect(['index']);
             };
         }
 

@@ -1,7 +1,7 @@
 <?php
 /**
- * Setting index view
- * @version     1.0
+ * Key index view
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -20,18 +20,23 @@ use yii\widgets\Pjax;
  * @var ActiveRecordInterface $searchModel
  */
 
+echo $this->render('_tools');
+
 Pjax::begin([
-    'id' => 'settings-index'
+    'id' => 'setting-index'
 ]);
 echo GridView::widget([
     'dataProvider' => $dataProvider,
+    'summary'      => false,
     'columns'      => [
         [
             'class' => 'yii\grid\SerialColumn'
         ],
-        'group',
         'name',
         'value',
+        'group',
+        'key.type',
+        'key.description',
         [
             'class'    => 'yii\grid\ActionColumn',
             'template' => '{update} {delete}',

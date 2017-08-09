@@ -1,0 +1,38 @@
+<?php
+/**
+ * TypeServiceTest
+ * @version     1.0.0-alpha.4
+ * @license     http://mit-license.org/
+ * @author      Tapakan https://github.com/Tapakan
+ * @coder       Alexander Oganov <t_tapak@yahoo.com>
+ * @copyright   Copyright (C) Hexa,  All rights reserved.
+ */
+
+namespace hexa\yiiconfig\tests\unit\services;
+
+use hexa\yiiconfig\services\TypeService;
+use hexa\yiiconfig\tests\unit\TestUnit;
+
+/**
+ * Class TypeServiceTest
+ */
+class TypeServiceTest extends TestUnit
+{
+    /**
+     * Test get list service function.
+     */
+    public function testGetList()
+    {
+        $service = new TypeService();
+
+        verify($service->list())->equals([
+            'string'  => 'string',
+            'integer' => 'integer',
+            'boolean' => 'boolean',
+            'float'   => 'number',
+            'email'   => 'email',
+            'ip'      => 'ip',
+            'url'     => 'url',
+        ]);
+    }
+}

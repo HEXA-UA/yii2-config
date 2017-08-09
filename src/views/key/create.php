@@ -1,7 +1,7 @@
 <?php
 /**
  * Key create view
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -20,7 +20,7 @@ use yii\web\View;
  */
 
 echo Html::beginTag('div', [
-    'class' => 'create-key js-create-key'
+    'class' => 'key-form-container hexa-form-container js-key-form-container js-hexa-form-container'
 ]);
 echo $this->context->renderPartial('_form', [
     'model'  => $model,

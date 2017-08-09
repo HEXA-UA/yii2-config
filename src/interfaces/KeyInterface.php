@@ -1,7 +1,7 @@
 <?php
 /**
  * KeyInterface
- * @version     1.0
+ * @version     1.0.0-alpha.4
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -23,10 +23,10 @@ interface KeyInterface
     /**
      * @return string
      */
-    public function getGroup();
+    public function getType();
 
     /**
      * @return string
      */
-    public function getType();
+    public function getDescription();
 }

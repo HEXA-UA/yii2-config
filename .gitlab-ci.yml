@@ -1,5 +1,5 @@
 # Select image from https://hub.docker.com/_/php/
-image: hexaua/dev:latest
+image: tapakan/basetest:latest
 
 # Select what we should cache
 cache:

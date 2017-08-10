@@ -1,6 +1,6 @@
 {
   "name"             : "hexa/yiiconfig",
-  "version"          : "1.0.0-alpha.4",
+  "version"          : "1.0.0-alpha.5",
   "description"      : "Yii2 config module. With CRUD and service provider",
   "homepage"         : "https://git.hexa.com.ua/yii2/config",
   "type"             : "yii2-extension",

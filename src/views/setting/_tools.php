@@ -1,7 +1,7 @@
 <?php
 /**
  * Group tools view
- * @version     1.0.0-alpha.4
+ * @version     1.0.0-alpha.5
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -9,5 +9,5 @@
  */
 
 echo \yii\helpers\Html::beginTag('div', ['class' => 'hexa-config-tools']);
-echo \yii\helpers\Html::a('Create', ['group/create'], ['class' => 'btn btn-success']);
+echo \yii\helpers\Html::a('Create', ['setting/create'], ['class' => 'btn btn-success']);
 echo \yii\helpers\Html::endTag('div');

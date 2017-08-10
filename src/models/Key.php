@@ -1,7 +1,7 @@
 <?php
 /**
  * Key model
- * @version     1.0.0-alpha.4
+ * @version     1.0.0-alpha.5
  * @license     http://mit-license.org/
  * @author      Tapakan https://github.com/Tapakan
  * @coder       Alexander Oganov <t_tapak@yahoo.com>
@@ -12,7 +12,6 @@ namespace hexa\yiiconfig\models;
 
 use hexa\yiiconfig\db\KeyQuery;
 use hexa\yiiconfig\interfaces\KeyInterface;
-use hexa\yiiconfig\services\GroupService;
 use hexa\yiiconfig\services\TypeService;
 
 /**
@@ -35,6 +34,14 @@ class Key extends ActiveRecord implements KeyInterface
         return [
             ['type', 'in', 'range' => \Yii::$container->get(TypeService::className())->list()],
             [['type', 'name'], 'required'],
+            [
+                'name',
+                'filter',
+                'filter' => function ($value) {
+                    return strtolower(trim($value));
+                }
+            ],
+            ['name', 'unique'],
             ['description', 'string', 'max' => 1000]
         ];
     }

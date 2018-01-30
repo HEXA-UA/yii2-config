@@ -8,16 +8,16 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  **/
 
-namespace hexa\yiiconfig\controllers;
+namespace hexaua\yiiconfig\controllers;
 
-use hexa\yiiconfig\actions\CreateAction;
-use hexa\yiiconfig\actions\DeleteAction;
-use hexa\yiiconfig\actions\IndexAction;
-use hexa\yiiconfig\actions\UpdateAction;
-use hexa\yiiconfig\models\search\SettingSearch;
-use hexa\yiiconfig\models\Setting;
-use hexa\yiiconfig\services\GroupService;
-use hexa\yiiconfig\services\KeyService;
+use hexaua\yiiconfig\actions\CreateAction;
+use hexaua\yiiconfig\actions\DeleteAction;
+use hexaua\yiiconfig\actions\IndexAction;
+use hexaua\yiiconfig\actions\UpdateAction;
+use hexaua\yiiconfig\models\search\SettingSearch;
+use hexaua\yiiconfig\models\Setting;
+use hexaua\yiiconfig\services\GroupService;
+use hexaua\yiiconfig\services\KeyService;
 
 /**
  * Class SettingController

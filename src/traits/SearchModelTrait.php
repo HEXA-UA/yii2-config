@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\traits;
+namespace hexaua\yiiconfig\traits;
 
 use yii\data\DataProviderInterface;
 

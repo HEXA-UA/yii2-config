@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\traits;
+namespace hexaua\yiiconfig\tests\unit\traits;
 
-use hexa\yiiconfig\models\Group;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\models\Group;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Trait GroupTest

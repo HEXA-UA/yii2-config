@@ -8,11 +8,11 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\models\search;
+namespace hexaua\yiiconfig\models\search;
 
-use hexa\yiiconfig\interfaces\SearchModelInterface;
-use hexa\yiiconfig\models\Setting;
-use hexa\yiiconfig\traits\SearchModelTrait;
+use hexaua\yiiconfig\interfaces\SearchModelInterface;
+use hexaua\yiiconfig\models\Setting;
+use hexaua\yiiconfig\traits\SearchModelTrait;
 use yii\data\DataProviderInterface;
 use yii\helpers\ArrayHelper;
 

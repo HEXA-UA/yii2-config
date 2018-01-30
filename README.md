@@ -5,13 +5,13 @@ Description here
 
 Run command
 ```php
-composer require hexa/yiiconfig:*
+composer require hexaua/yii2-config:*
 ```
 OR add following lines to `composer.json` file in `require` section
 ```php
 {
     "require": {
-        "hexa/yiiconfig": "*"
+        "hexaua/yii2-config": "*"
     }
 }
 ```
@@ -20,7 +20,7 @@ OR add following lines to `composer.json` file in `require` section
 
 To run migrations execute following command from project root directory
 ```php
-php yii migrate --migrationPath=@hexa/yiiconfig/migrations
+php yii migrate --migrationPath=@hexaua/yiiconfig/migrations
 ```
 
 ## Usage
@@ -28,9 +28,9 @@ php yii migrate --migrationPath=@hexa/yiiconfig/migrations
 [
     'components' => [
         'config' => [
-              'class'          => 'hexa\yiiconfig\component\ManagerConfig',
+              'class'          => 'hexaua\yiiconfig\component\ManagerConfig',
               'providerConfig' => [
-                  'class'    => 'hexa\yiiconfig\component\providers\DbProvider',
+                  'class'    => 'hexaua\yiiconfig\component\providers\DbProvider',
                   'duration' => 3600 // Cache duration in seconds
               ]
         ]

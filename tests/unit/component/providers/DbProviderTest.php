@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\component\providers;
+namespace hexaua\yiiconfig\tests\unit\component\providers;
 
-use hexa\yiiconfig\component\providers\DbProvider;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\component\providers\DbProvider;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 use yii\base\InvalidParamException;
 
 /**

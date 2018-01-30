@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\component;
+namespace hexaua\yiiconfig\component;
 
 /**
  * Interface ConfigInterface

@@ -8,9 +8,9 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\services;
+namespace hexaua\yiiconfig\services;
 
-use hexa\yiiconfig\interfaces\ListInterface;
+use hexaua\yiiconfig\interfaces\ListInterface;
 use yii\base\Object;
 
 /**

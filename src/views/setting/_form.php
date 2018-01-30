@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-use hexa\yiiconfig\models\Setting;
+use hexaua\yiiconfig\models\Setting;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;

@@ -8,9 +8,9 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\models;
+namespace hexaua\yiiconfig\models;
 
-use hexa\yiiconfig\interfaces\GroupInterface;
+use hexaua\yiiconfig\interfaces\GroupInterface;
 
 /**
  * This is the model class for table "groups".

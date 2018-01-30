@@ -8,11 +8,11 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\component;
+namespace hexaua\yiiconfig\tests\unit\component;
 
 use AspectMock\Test;
-use hexa\yiiconfig\component\ManagerConfig;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\component\ManagerConfig;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 use yii\base\NotSupportedException;
 
 /**
@@ -45,7 +45,7 @@ class ManagerConfigTest extends TestUnit
     {
         $this->specify("Manager can create ArrayProvider", function () {
             $manager = $this->getManager([
-                'providerConfig' => 'hexa\yiiconfig\component\providers\ArrayProvider',
+                'providerConfig' => 'hexaua\yiiconfig\component\providers\ArrayProvider',
                 'providerParams' => [
                     'data' => [
                         'siteName' => 'Test it'
@@ -53,7 +53,7 @@ class ManagerConfigTest extends TestUnit
                 ]
             ]);
 
-            verify($manager->getProvider())->isInstanceOf('hexa\yiiconfig\component\providers\ArrayProvider');
+            verify($manager->getProvider())->isInstanceOf('hexaua\yiiconfig\component\providers\ArrayProvider');
         });
 
         // Mock application for DBProvider.
@@ -63,10 +63,10 @@ class ManagerConfigTest extends TestUnit
 
         $this->specify("Manager can create DBProvider", function () {
             $manager = $this->getManager([
-                'providerConfig' => 'hexa\yiiconfig\component\providers\DbProvider'
+                'providerConfig' => 'hexaua\yiiconfig\component\providers\DbProvider'
             ]);
 
-            verify($manager->getProvider())->isInstanceOf('hexa\yiiconfig\component\providers\DbProvider');
+            verify($manager->getProvider())->isInstanceOf('hexaua\yiiconfig\component\providers\DbProvider');
         });
     }
 
@@ -76,9 +76,9 @@ class ManagerConfigTest extends TestUnit
     public function testGet()
     {
         $this->specify("Manager should call get provider method", function () {
-            $arrayProvider = test::double('hexa\yiiconfig\component\providers\ArrayProvider');
+            $arrayProvider = test::double('hexaua\yiiconfig\component\providers\ArrayProvider');
             $manager       = $this->getManager([
-                'providerConfig' => 'hexa\yiiconfig\component\providers\ArrayProvider'
+                'providerConfig' => 'hexaua\yiiconfig\component\providers\ArrayProvider'
             ]);
 
             $manager->get('unknownProperty');

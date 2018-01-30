@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-use hexa\yiiconfig\models\Key;
+use hexaua\yiiconfig\models\Key;
 use yii\helpers\Html;
 use yii\web\View;
 

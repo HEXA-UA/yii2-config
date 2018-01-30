@@ -8,9 +8,9 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\models\search;
+namespace hexaua\yiiconfig\tests\unit\models\search;
 
-use hexa\yiiconfig\models\search\SettingSearch;
+use hexaua\yiiconfig\models\search\SettingSearch;
 
 /**
  * Class SettingSearchTest

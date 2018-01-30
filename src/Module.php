@@ -8,11 +8,11 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig;
+namespace hexaua\yiiconfig;
 
-use hexa\yiiconfig\services\GroupService;
-use hexa\yiiconfig\services\KeyService;
-use hexa\yiiconfig\services\TypeService;
+use hexaua\yiiconfig\services\GroupService;
+use hexaua\yiiconfig\services\KeyService;
+use hexaua\yiiconfig\services\TypeService;
 
 /**
  * Class Module
@@ -61,9 +61,9 @@ class Module extends \yii\base\Module
      */
     public function registerServices()
     {
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\KeyService', KeyService::className());
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\GroupService', GroupService::className());
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\TypeService', TypeService::className());
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\SettingService', TypeService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\KeyService', KeyService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\GroupService', GroupService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\TypeService', TypeService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\SettingService', TypeService::className());
     }
 }

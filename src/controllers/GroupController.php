@@ -8,14 +8,14 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  **/
 
-namespace hexa\yiiconfig\controllers;
+namespace hexaua\yiiconfig\controllers;
 
-use hexa\yiiconfig\actions\CreateAction;
-use hexa\yiiconfig\actions\DeleteAction;
-use hexa\yiiconfig\actions\IndexAction;
-use hexa\yiiconfig\actions\UpdateAction;
-use hexa\yiiconfig\models\Group;
-use hexa\yiiconfig\models\search\GroupSearch;
+use hexaua\yiiconfig\actions\CreateAction;
+use hexaua\yiiconfig\actions\DeleteAction;
+use hexaua\yiiconfig\actions\IndexAction;
+use hexaua\yiiconfig\actions\UpdateAction;
+use hexaua\yiiconfig\models\Group;
+use hexaua\yiiconfig\models\search\GroupSearch;
 
 /**
  * Class GroupController

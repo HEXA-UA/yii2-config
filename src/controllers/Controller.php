@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  **/
 
-namespace hexa\yiiconfig\controllers;
+namespace hexaua\yiiconfig\controllers;
 
 use \yii\web\Controller as BaseController;
 

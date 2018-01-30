@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\models;
+namespace hexaua\yiiconfig\models;
 
 /**
  * @property integer $id

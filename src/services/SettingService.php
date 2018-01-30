@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\services;
+namespace hexaua\yiiconfig\services;
 
-use hexa\yiiconfig\interfaces\ListInterface;
-use hexa\yiiconfig\models\Setting;
+use hexaua\yiiconfig\interfaces\ListInterface;
+use hexaua\yiiconfig\models\Setting;
 use yii\base\Object;
 use yii\helpers\ArrayHelper;
 

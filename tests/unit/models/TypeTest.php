@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\traits;
+namespace hexaua\yiiconfig\tests\unit\traits;
 
-use hexa\yiiconfig\models\Type;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\models\Type;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Trait KeyTest

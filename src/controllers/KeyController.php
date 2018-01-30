@@ -8,16 +8,16 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  **/
 
-namespace hexa\yiiconfig\controllers;
+namespace hexaua\yiiconfig\controllers;
 
-use hexa\yiiconfig\actions\CreateAction;
-use hexa\yiiconfig\actions\DeleteAction;
-use hexa\yiiconfig\actions\IndexAction;
-use hexa\yiiconfig\actions\UpdateAction;
-use hexa\yiiconfig\models\Key;
-use hexa\yiiconfig\models\search\KeySearch;
-use hexa\yiiconfig\services\GroupService;
-use hexa\yiiconfig\services\TypeService;
+use hexaua\yiiconfig\actions\CreateAction;
+use hexaua\yiiconfig\actions\DeleteAction;
+use hexaua\yiiconfig\actions\IndexAction;
+use hexaua\yiiconfig\actions\UpdateAction;
+use hexaua\yiiconfig\models\Key;
+use hexaua\yiiconfig\models\search\KeySearch;
+use hexaua\yiiconfig\services\GroupService;
+use hexaua\yiiconfig\services\TypeService;
 
 /**
  * Class KeyController

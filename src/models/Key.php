@@ -8,11 +8,11 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\models;
+namespace hexaua\yiiconfig\models;
 
-use hexa\yiiconfig\db\KeyQuery;
-use hexa\yiiconfig\interfaces\KeyInterface;
-use hexa\yiiconfig\services\TypeService;
+use hexaua\yiiconfig\db\KeyQuery;
+use hexaua\yiiconfig\interfaces\KeyInterface;
+use hexaua\yiiconfig\services\TypeService;
 
 /**
  * This is the model class for table "keys".

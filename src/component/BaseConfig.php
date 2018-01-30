@@ -8,9 +8,9 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\component;
+namespace hexaua\yiiconfig\component;
 
-use hexa\yiiconfig\component\providers\ProviderInterface;
+use hexaua\yiiconfig\component\providers\ProviderInterface;
 use yii\base\Component;
 
 /**
@@ -21,19 +21,19 @@ use yii\base\Component;
  * [
  *     'components' => [
  *          'config' => [
- *               'class'          => 'hexa\yiiconfig\component\ManagerConfig',
- *               'providerConfig' => 'hexa\yiiconfig\component\providers\DbProvider'
+ *               'class'          => 'hexaua\yiiconfig\component\ManagerConfig',
+ *               'providerConfig' => 'hexaua\yiiconfig\component\providers\DbProvider'
  *
  *               // OR you can configure it
  *
  *               'providerConfig' => [
- *                    'class'      => 'hexa\yiiconfig\component\providers\DbProvider',
+ *                    'class'      => 'hexaua\yiiconfig\component\providers\DbProvider',
  *                    'tableName'  => '{{%settings}}'
  *                ],
  *
  *              // Pass some arguments to constructor
  *
- *              'providerConfig' => 'hexa\yiiconfig\component\providers\ArrayProvider',
+ *              'providerConfig' => 'hexaua\yiiconfig\component\providers\ArrayProvider',
  *              'providerParams' => [
  *                  'data' => [
  *                      'siteName' => 'Test it'
@@ -53,7 +53,7 @@ abstract class BaseConfig extends Component implements ConfigInterface
     /**
      * @var string
      */
-    public $providerConfig = 'hexa\yiiconfig\component\providers\ArrayProvider';
+    public $providerConfig = 'hexaua\yiiconfig\component\providers\ArrayProvider';
 
     /**
      * Params that will be passed to constructor.

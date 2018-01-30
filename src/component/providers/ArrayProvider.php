@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\component\providers;
+namespace hexaua\yiiconfig\component\providers;
 
 use yii\helpers\ArrayHelper;
 

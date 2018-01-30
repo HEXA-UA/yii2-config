@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\db;
+namespace hexaua\yiiconfig\tests\unit\db;
 
-use hexa\yiiconfig\db\ActiveQuery;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\db\ActiveQuery;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Class ActiveQueryTest

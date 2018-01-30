@@ -8,12 +8,12 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\db;
+namespace hexaua\yiiconfig\tests\unit\db;
 
 use AspectMock\Test;
-use hexa\yiiconfig\db\KeyQuery;
-use hexa\yiiconfig\models\Key;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\db\KeyQuery;
+use hexaua\yiiconfig\models\Key;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Class KeyQueryTest

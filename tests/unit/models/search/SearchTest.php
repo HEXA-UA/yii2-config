@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\models\search;
+namespace hexaua\yiiconfig\tests\unit\models\search;
 
 use AspectMock\Test;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Class SearchTest

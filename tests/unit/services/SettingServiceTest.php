@@ -8,11 +8,11 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\services;
+namespace hexaua\yiiconfig\tests\unit\services;
 
 use AspectMock\Test;
-use hexa\yiiconfig\services\SettingService;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\services\SettingService;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Class SettingServiceTest

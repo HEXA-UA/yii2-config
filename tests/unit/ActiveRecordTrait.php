@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit;
+namespace hexaua\yiiconfig\tests\unit;
 
 /**
  * Trait ActiveRecordTesterTrait

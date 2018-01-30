@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\traits;
+namespace hexaua\yiiconfig\tests\unit\traits;
 
-use hexa\yiiconfig\tests\unit\TestUnit;
-use hexa\yiiconfig\traits\SearchModelTrait as TraitModel;
+use hexaua\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\traits\SearchModelTrait as TraitModel;
 
 
 /**

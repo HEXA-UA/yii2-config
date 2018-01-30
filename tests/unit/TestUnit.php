@@ -8,15 +8,15 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit;
+namespace hexaua\yiiconfig\tests\unit;
 
 use AspectMock\Test;
 use Codeception\Specify;
 use Codeception\Test\Unit;
-use hexa\yiiconfig\services\GroupService;
-use hexa\yiiconfig\services\KeyService;
-use hexa\yiiconfig\services\SettingService;
-use hexa\yiiconfig\services\TypeService;
+use hexaua\yiiconfig\services\GroupService;
+use hexaua\yiiconfig\services\KeyService;
+use hexaua\yiiconfig\services\SettingService;
+use hexaua\yiiconfig\services\TypeService;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -40,10 +40,10 @@ class TestUnit extends Unit
      */
     protected function registerServices()
     {
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\KeyService', KeyService::className());
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\GroupService', GroupService::className());
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\TypeService', TypeService::className());
-        \Yii::$container->setSingleton('hexa\yiiconfig\services\SettingService', SettingService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\KeyService', KeyService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\GroupService', GroupService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\TypeService', TypeService::className());
+        \Yii::$container->setSingleton('hexaua\yiiconfig\services\SettingService', SettingService::className());
     }
 
     /**

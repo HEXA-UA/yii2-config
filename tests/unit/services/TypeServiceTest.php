@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\services;
+namespace hexaua\yiiconfig\tests\unit\services;
 
-use hexa\yiiconfig\services\TypeService;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\services\TypeService;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Class TypeServiceTest

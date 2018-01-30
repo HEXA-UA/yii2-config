@@ -1,31 +1,33 @@
 {
-  "name"             : "hexa/yiiconfig",
-  "version"          : "1.0.0-alpha.5",
-  "description"      : "Yii2 config module. With CRUD and service provider",
-  "homepage"         : "https://git.hexa.com.ua/yii2/config",
-  "type"             : "yii2-extension",
+  "name": "hexaua/yii2-config",
+  "version": "1.0.0-alpha.5",
+  "description": "Yii2 config module. With CRUD and service provider",
+  "homepage": "https://github.com/HEXA-UA/yii2-config",
+  "type": "yii2-extension",
   "minimum-stability": "stable",
-  "author"           : {
-    "name" : "Alexander Oganov",
-    "email": "a.ohanov@hexa.com.ua",
-    "role" : "Developer"
-  },
-  "require"          : {
-    "php"         : ">=7.0",
+  "authors": [
+    {
+      "name": "Alexander Oganov",
+      "email": "a.ohanov@hexa.com.ua",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
     "yiisoft/yii2": "~2.0"
   },
-  "require-dev"      : {
-    "codeception/codeception"  : "^2.2",
-    "codeception/verify"       : "~0.3.1",
-    "codeception/specify"      : "~0.4.5",
-    "codeception/aspect-mock"  : "*",
+  "require-dev": {
+    "codeception/codeception": "^2.2",
+    "codeception/verify": "~0.3.1",
+    "codeception/specify": "~0.4.5",
+    "codeception/aspect-mock": "~2.0.1",
     "phpunit/php-code-coverage": "~4.0",
-    "fzaninotto/faker"         : "^1.6"
+    "fzaninotto/faker": "^1.6"
   },
-  "autoload"         : {
+  "autoload": {
     "psr-4": {
-      "hexa\\yiiconfig\\"       : "src",
-      "hexa\\yiiconfig\\tests\\": "tests"
+      "hexaua\\yiiconfig\\": "src",
+      "hexaua\\yiiconfig\\tests\\": "tests"
     }
   }
 }

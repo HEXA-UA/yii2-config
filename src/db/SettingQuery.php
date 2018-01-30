@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\db;
+namespace hexaua\yiiconfig\db;
 
 /**
  * Class SettingQuery

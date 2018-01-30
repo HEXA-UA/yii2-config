@@ -8,10 +8,10 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\models;
+namespace hexaua\yiiconfig\models;
 
-use hexa\yiiconfig\db\SettingQuery;
-use hexa\yiiconfig\interfaces\SettingInterface;
+use hexaua\yiiconfig\db\SettingQuery;
+use hexaua\yiiconfig\interfaces\SettingInterface;
 use yii\base\DynamicModel;
 use yii\behaviors\AttributeBehavior;
 

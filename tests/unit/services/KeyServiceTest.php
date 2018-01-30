@@ -8,11 +8,11 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\services;
+namespace hexaua\yiiconfig\tests\unit\services;
 
 use AspectMock\Test;
-use hexa\yiiconfig\services\KeyService;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\services\KeyService;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 
 /**
  * Class KeyServiceTest

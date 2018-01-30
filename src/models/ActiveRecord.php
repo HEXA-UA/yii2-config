@@ -8,9 +8,9 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\models;
+namespace hexaua\yiiconfig\models;
 
-use hexa\yiiconfig\db\ActiveQuery;
+use hexaua\yiiconfig\db\ActiveQuery;
 use yii\db\ActiveRecord as BaseActiveRecord;
 
 /**

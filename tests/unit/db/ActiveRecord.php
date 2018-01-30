@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\db;
+namespace hexaua\yiiconfig\tests\unit\db;
 
 use yii\db\ActiveRecord as BaseActiveRecord;
 

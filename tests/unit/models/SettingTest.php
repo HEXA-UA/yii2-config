@@ -8,12 +8,12 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\tests\unit\traits;
+namespace hexaua\yiiconfig\tests\unit\traits;
 
 use Codeception\Specify;
-use hexa\yiiconfig\models\Key;
-use hexa\yiiconfig\models\Setting;
-use hexa\yiiconfig\tests\unit\TestUnit;
+use hexaua\yiiconfig\models\Key;
+use hexaua\yiiconfig\models\Setting;
+use hexaua\yiiconfig\tests\unit\TestUnit;
 use yii\db\ActiveQueryInterface;
 
 /**

@@ -8,7 +8,7 @@
  * @copyright   Copyright (C) Hexa,  All rights reserved.
  */
 
-namespace hexa\yiiconfig\actions;
+namespace hexaua\yiiconfig\actions;
 
 use yii\base\Action;
 use yii\base\InvalidConfigException;
